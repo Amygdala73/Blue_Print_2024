@@ -1,0 +1,25 @@
+{
+  "name": "blue_print_2024",
+  "version": "1.0.0",
+  "description": "Blueprint Hackathon 2024 Team 29",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "live-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "typescript": "^5.6.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amygdala73/Blue_Print_2024.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Amygdala73/Blue_Print_2024/issues"
+  },
+  "homepage": "https://github.com/Amygdala73/Blue_Print_2024#readme"
+}
