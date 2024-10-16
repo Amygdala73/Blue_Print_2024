@@ -215,7 +215,6 @@ body.overflow-hidden {
 .overlay {
   width: 100%;
   height: 100%;
-  background-color: var(--beige);
   position: fixed;
   left: 0;
   top: 0;
@@ -223,6 +222,10 @@ body.overflow-hidden {
   padding: var(--space-48) var(--space-32) var(--space-32);
   display: grid;
   place-items: center;
+  backdrop-filter: blur(6px);
+  background-color: rgba(93, 91, 91, 0.165);
+  transition: opacity 0.3s ease;
+
   /* if content is longer than screen height, enable scrollbar */
   overflow-y: auto;
 }
