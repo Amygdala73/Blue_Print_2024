@@ -3,11 +3,6 @@ body.overflow-hidden {
   overflow: hidden;
 }
 
-.content-container {
-  padding-block: var(--space-32);
-  padding-top: 0;
-}
-
 /* siderbar */
 .siderbar {
   width: 254px;
