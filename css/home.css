@@ -64,8 +64,9 @@ body {
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgb(255, 156, 156);
-    width: 90%;
-    max-width: 1200px;
+    width: 1194.265px;
+    height: 616px;
+    flex-shrink: 0;
     margin: 10 auto;
 }
 
@@ -82,11 +83,16 @@ body {
     align-items: flex-start;
     gap: 20px;
     margin-top: 20px;
-    padding: 20px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    padding: 70px;
     background-color: white;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 10 4px 6px rgb(255,156,156);
+    width: 80%; 
+    height: auto; 
 }
+
 
 /* Time Column */
 .time-column {
