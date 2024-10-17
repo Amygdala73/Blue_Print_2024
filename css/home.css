@@ -60,14 +60,15 @@ body {
     align-items: flex-start;
     gap: 20px;
     margin-top: 20px;
-    padding: 20px;
+    padding: 40px;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgb(255, 156, 156);
     width: 1194.265px;
     height: 616px;
     flex-shrink: 0;
-    margin: 10 auto;
+    margin: 20;
+    height: auto
 }
 
 /* Section headers */
@@ -93,6 +94,28 @@ body {
     height: auto; 
 }
 
+/* Time Row */
+
+.timetable-container tr {
+    height: 60px; /* Adjust to fit your design */
+    text-align: center; /* Center text inside each row */
+    vertical-align: middle; /* Vertically center the text */
+}
+
+/* For the time stamps */
+.time-stamps {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.time-stamps div {
+    height: 60px; /* Same height as the table rows */
+    display: flex;
+    align-items: center; /* Vertically align time in the middle */
+    justify-content: flex-end; /* Align the time to the right */
+    margin-right: 10px; /* Optional: adds space between time and table */
+}
 
 /* Time Column */
 .time-column {
