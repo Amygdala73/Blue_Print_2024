@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkWise Dashboard</title>
+    <link rel="stylesheet" href="../css/home.css"> <!-- Link to your CSS -->
+</head>
+<body>
+     <!-- Sidebar for navigation -->
+     <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>WorkWise</h2>
+        </div>
+        <ul class="nav-list">
+            <li><a href="#">COMP1511 Assessment 1</a></li>
+            <li><a href="#">COMP1511 Assessment 2</a></li>
+        </ul>
+        <div class="toggle">
+            <div class="ico">↻</div>
+        </div>
+        <h2>Notifications</h2>
+        <div class="notibox">
+            Friend has new availability.
+            <div class="cancel">✕</div>
+        </div>
+        <div class="buttons-container">
+            <button id="add-task-cta" 
+            class="button regular-button blue-background">
+            Add task
+        </button>
+            <button onclick="window.location.href='./login.html'" 
+            class="button regular-button milkwhite-background">
+            Go to Login
+        </button>
+            <button class="button sign-out-cta">Sign out</button>
+        </div>
+    </aside>
+
+    <div class="overlay hide">
+        <div class="overlay-content">
+            <button class="close-button">✕</button>
+            <form class="add-task-form">
+                <h2>Add Task</h2>
+    
+                <!-- Name Field -->
+                <label for="task-name">Name</label>
+                <input type="text" id="task-name" name="name" required>
+                
+                <!-- Description Field -->
+                <label for="task-desc">Description</label>
+                <textarea id="task-desc" name="description"></textarea>
+                
+                <!-- Due Date Section -->
+                <label for="task-day">Start Date and Time</label>
+                <div>
+                    <input type="number" id="task-day" name="day" placeholder="Day" min="1" max="31" required>
+                    <input type="number" id="task-month" name="month" placeholder="Month" min="1" max="12" required>
+                    <input type="number" id="task-year" name="year" placeholder="Year" min="2024" required>
+                </div>
+                
+                <!-- Start Time Section -->
+                <label for="task-day">Due Date and Time</label>
+                <div>
+                    <input type="number" id="task-day" name="day" placeholder="Day" min="1" max="31" required>
+                    <input type="number" id="task-month" name="month" placeholder="Month" min="1" max="12" required>
+                    <input type="number" id="task-year" name="year" placeholder="Year" min="2024" required>
+                </div>
+    
+                <!-- Priority Section -->
+                <label for="priority">Priority</label>
+                <input type="range" id="priority" name="priority" min="1" max="4" step="1">
+                <div class="priority-labels">
+                    <span>Urgent & Important</span>
+                    <span>Not Urgent & Important</span>
+                    <span>Not Urgent & Unimportant</span>
+                    <span>Urgent & Unimportant</span>
+                </div>
+    
+                <!-- Availability Section -->
+                <label for="availability">Availability</label>
+                <input type="range" id="availability" name="availability" min="1" max="2" step="1">
+                <div class="availability-labels">
+                    <span>Not Available</span>
+                    <span>Available</span>
+                </div>
+                
+                <!-- Status Section -->
+                <label for="task-status">Status</label>
+                <select id="task-status" name="status">
+                    <option value="todo">To do</option>
+                    <option value="doing">Doing</option>
+                    <option value="done">Done</option>
+                </select>
+                
+                <!-- Submit Button -->
+                <button type="submit" class="button regular-button">Add task</button>
+            </form>
+        </div>
+    </div>
+    
+
+    
+
+    <!-- Main content section -->
+    <main class="main-content">
+        <!-- Header -->
+        <section class="header">
+            <h1>COMP1511 Assessment 1</h1>
+        </section>
+        <!-- New White Box Section -->
+
+        <section class="white-box">
+            <h2 class="heading-with-arrow">
+                <span class="arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
+                        <path d="M37.4633 29.2805C37.2724 29.4722 37.0454 29.6242 36.7956 29.728C36.5457 29.8317 36.2778 29.8851 36.0072 29.8851C35.7367 29.8851 35.4688 29.8317 35.2189 29.728C34.9691 29.6242 34.7421 29.4722 34.5511 29.2805L22.3045 17.0339L10.0544 29.2805C9.66822 29.6667 9.14444 29.8837 8.5983 29.8837C8.05216 29.8837 7.52838 29.6667 7.1422 29.2805C6.75602 28.8943 6.53906 28.3706 6.53906 27.8244C6.53906 27.2783 6.75602 26.7545 7.1422 26.3683L20.8467 12.6639C21.0376 12.4722 21.2646 12.3202 21.5145 12.2164C21.7643 12.1126 22.0322 12.0592 22.3028 12.0592C22.5733 12.0592 22.8412 12.1126 23.0911 12.2164C23.341 12.3202 23.5679 12.4722 23.7589 12.6639L37.4633 26.3683C37.655 26.5593 37.807 26.7862 37.9108 27.0361C38.0145 27.286 38.068 27.5539 38.068 27.8244C38.068 28.095 38.0145 28.3629 37.9108 28.6127C37.807 28.8626 37.655 29.0895 37.4633 29.2805Z" fill="#343330"/>
+                    </svg>
+                </span>
+                Timetable
+            </h2>
+        </section>
+
+        <div class="relative-wrapper expanded"> <!-- Add expanded/collapsed class here -->
+            <!-- Pink shadow background -->
+            <section class="white-background"></section>
+            <div class="pink-background-shadow"></div>
+            
+            <div class="timetable-availability-wrapper">
+                <!-- Time Column (Time Stamps) -->
+                <div class="time-column">
+                    <div class="time-slot">9 AM</div>
+                    <div class="time-slot">10 AM</div>
+                    <div class="time-slot">11 AM</div>
+                    <div class="time-slot">12 PM</div>
+                    <div class="time-slot">1 PM</div>
+                    <div class="time-slot">2 PM</div>
+                    <div class="time-slot">3 PM</div>
+                    <div class="time-slot">4 PM</div>
+                    <div class="time-slot">5 PM</div>
+                </div>
+
+                <!-- Timetable -->
+                <div class="timetable-container">
+                    <table class="timetable">
+                        <thead>
+                            <tr>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Availability Block -->
+                <div class="availability-container">
+                    <h3>Availability</h3>
+                    <section class = "availability-block">
+                        <ul class="availability-list">
+                            <!-- Dynamically updated time slots will be inserted here -->
+                        </ul>
+                    </section>
+                    <button class="book-room">Book a Room</button>
+
+
+
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/dashboard.js"></script> <!-- Link to JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const heading = document.querySelector(".heading-with-arrow");
+            const timetableWrapper = document.querySelector(".relative-wrapper");
+            const whiteBox = document.querySelector(".white-box");
+
+            // Add click event to the arrow/heading to toggle collapsed/expanded state
+            heading.addEventListener("click", function () {
+                // Toggle the classes for collapsing and expanding
+                timetableWrapper.classList.toggle("collapsed");
+                timetableWrapper.classList.toggle("expanded");
+                whiteBox.classList.toggle("collapsed");
+                whiteBox.classList.toggle("expanded");
+
+                // Adjust the height of the white box and maintain the pink background
+                const pinkBackground = document.querySelector(".pink-background-shadow");
+                if (whiteBox.classList.contains("collapsed")) {
+                    pinkBackground.style.height = "70px"; // Adjust pink background height when collapsed
+                } else {
+                    pinkBackground.style.height = "123%"; // Reset to full height when expanded
+                }
+            });
+
+            // Action for "Book a Room" button
+            const bookRoomButton = document.querySelector(".book-room");
+            bookRoomButton.addEventListener("click", function () {
+                window.location.href = "https://freerooms.devsoc.app/";
+            });
+
+            // Action for availability list items
+            document.querySelectorAll('.availability-list li').forEach(item => {
+                item.addEventListener('click', function () {
+                    alert('You selected: ' + item.textContent);
+                    
+                });
+            });
+        });
+    document.addEventListener("DOMContentLoaded", function () {
+        let isMouseDown = false;
+        const table = document.querySelector('.timetable');
+        const availabilityList = document.querySelector('.availability-list'); // The list that shows availability
+        const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']; // Day labels
+        const times = ['9 AM', '10 AM', '11 AM', '12 PM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM']; // Time labels
+
+        // Mouse down event
+        table.addEventListener('mousedown', function (event) {
+            if (event.target.tagName === 'TD') {
+                isMouseDown = true;
+                event.target.classList.add('selected'); // Add selected class
+                event.preventDefault(); // Prevent text selection
+                updateAvailability(); // Update availability when a cell is clicked
+            }
+        });
+
+        // Mouse move event (for dragging)
+        table.addEventListener('mousemove', function (event) {
+            if (isMouseDown && event.target.tagName === 'TD') {
+                event.target.classList.add('selected'); // Mark cell as selected when dragging over it
+                updateAvailability(); // Update availability during dragging
+            }
+        });
+
+        // Mouse up event
+        document.addEventListener('mouseup', function () {
+            isMouseDown = false; // Stop dragging
+        });
+
+        // Optional: double-click to toggle the "selected" state
+        table.addEventListener('click', function (event) {
+            if (event.target.tagName === 'TD') {
+                event.target.classList.toggle('selected'); // Toggle selected state on double-click
+                updateAvailability(); // Update availability when a cell is double-clicked
+            }
+        });
+
+        // Function to update the availability list
+        function updateAvailability() {
+            const selectedCells = table.querySelectorAll('.selected');
+            let selectedTimes = [];
+
+            selectedCells.forEach(cell => {
+                // Get row and column index of the selected cell
+                const rowIndex = cell.parentElement.rowIndex;
+                const colIndex = cell.cellIndex;
+
+                // Map the rowIndex to time and colIndex to day
+                const time = times[rowIndex];
+                const day = days[colIndex];
+
+                // Push the formatted time slot (e.g., "Monday 9 AM")
+                selectedTimes.push(`${day} - ${time}`);
+            });
+
+            // Update the availability list with the selected times
+            availabilityList.innerHTML = ''; // Clear the current list
+            selectedTimes.forEach(timeSlot => {
+                const li = document.createElement('li');
+                li.textContent = timeSlot;
+                availabilityList.appendChild(li);
+            });
+        }
+    });
+
+    </script>
+</body>
+</html>

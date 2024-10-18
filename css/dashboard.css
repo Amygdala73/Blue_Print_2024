@@ -422,4 +422,8 @@ body.overflow-hidden {
     grid-row: auto / auto;
     height: auto;
   }
+  .milkwhite-background {
+    background-color: #fdf2c9;
+  }
+  
 }
