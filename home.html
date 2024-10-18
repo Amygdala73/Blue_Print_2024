@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkWise Dashboard</title>
+    <link rel="stylesheet" href="../css/home.css"> <!-- Link to your CSS -->
+</head>
+<body>
+    <!-- Sidebar for navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>WorkWise</h2>
+        </div>
+        <ul class="nav-list">
+            <li><a href="#">COMP1511 Assessment 1</a></li>
+            <li><a href="#">COMP1511 Assessment 2</a></li>
+            <!-- Add more assessments as needed -->
+        </ul>
+    </aside>
+
+    <!-- Main content section -->
+    <main class="main-content">
+        <!-- Header -->
+        <section class="header">
+            <h1>COMP1511 Assessment 1</h1>
+        </section>
+
+        <section class="timetable-availability-wrapper">
+            <!-- Time Column -->
+            <div class="time-column">
+                <div class="time-slot">9 AM</div>
+                <div class="time-slot">10 AM</div>
+                <div class="time-slot">11 AM</div>
+                <div class="time-slot">12 PM</div>
+                <div class="time-slot">1 PM</div>
+                <div class="time-slot">2 PM</div>
+                <div class="time-slot">3 PM</div>
+                <div class="time-slot">4 PM</div>
+            </div>
+        
+            <!-- Timetable Container -->
+            <div class="timetable-container">
+                <h2 class="section-header">Timetable</h2>
+                <table class="timetable">
+                    <thead>
+                        <tr>
+                            <th>Monday</th>
+                            <th>Tuesday</th>
+                            <th>Wednesday</th>
+                            <th>Thursday</th>
+                            <th>Friday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        
+            <div class="availability-container">
+                <h3 class="section-header">Availability</h3>
+                <ul class="availability-list">
+                    <li>Wed 16 Oct - 10 am - 11 am</li>
+                    <li>Wed 16 Oct - 10 am - 11 am</li>
+                    <li>Wed 16 Oct - 10 am - 11 am</li>
+                </ul>
+                <button class="book-room">Book a Room</button>
+            </div>
+        </section>
+        
+
+        <!-- Task Management Section -->
+        <section class="tasks-section">
+            <h2>Tasks</h2>
+            <div class="task-columns">
+                <!-- To Do Column -->
+                <div class="task-column">
+                    <h3>To Do</h3>
+                    <ul class="task-list">
+                        <li><div class="task-card">Task 1 <br> Person 1, Person 2</div></li>
+                    </ul>
+                    <button class="add-task">+ New Task</button>
+                </div>
+
+                <!-- Doing Column -->
+                <div class="task-column">
+                    <h3>Doing</h3>
+                    <ul class="task-list">
+                        <li><div class="task-card">Task 1 <br> Person 1, Person 2</div></li>
+                    </ul>
+                    <button class="add-task">+ New Task</button>
+                </div>
+
+                <!-- Done Column -->
+                <div class="task-column">
+                    <h3>Done</h3>
+                    <ul class="task-list">
+                        <li><div class="task-card">Task 1 <br> Person 1, Person 2</div></li>
+                    </ul>
+                    <button class="add-task">+ New Task</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/dashboard.js"></script> <!-- Link to JavaScript -->
+</body>
+</html>

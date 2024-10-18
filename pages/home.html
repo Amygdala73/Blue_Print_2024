@@ -4,59 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WorkWise Dashboard</title>
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/home.css"> <!-- Link to your CSS -->
 </head>
 <body>
+    <!-- Sidebar for navigation -->
     <aside class="sidebar">
         <div class="sidebar-header">
             <h2>WorkWise</h2>
         </div>
         <ul class="nav-list">
-            <li><a href="#" onclick="showTasks('assessment1')">COMP1511 Assessment 1</a></li>
-            <li><a href="#" onclick="showTasks('assessment2')">COMP1511 Assessment 2</a></li>
+            <li><a href="#">COMP1511 Assessment 1</a></li>
+            <li><a href="#">COMP1511 Assessment 2</a></li>
         </ul>
     </aside>
 
+    <!-- Main content section -->
     <main class="main-content">
+        <!-- Header -->
         <section class="header">
-            <h1 id="project-title">COMP1511 Assessment 1</h1>
+            <h1>COMP1511 Assessment 1</h1>
+        </section>
+        <!-- New White Box Section -->
+
+          
+        <section class="white-box">
+            <h2 class="heading-with-arrow">
+                <span class="arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
+                        <path d="M37.4633 29.2805C37.2724 29.4722 37.0454 29.6242 36.7956 29.728C36.5457 29.8317 36.2778 29.8851 36.0072 29.8851C35.7367 29.8851 35.4688 29.8317 35.2189 29.728C34.9691 29.6242 34.7421 29.4722 34.5511 29.2805L22.3045 17.0339L10.0544 29.2805C9.66822 29.6667 9.14444 29.8837 8.5983 29.8837C8.05216 29.8837 7.52838 29.6667 7.1422 29.2805C6.75602 28.8943 6.53906 28.3706 6.53906 27.8244C6.53906 27.2783 6.75602 26.7545 7.1422 26.3683L20.8467 12.6639C21.0376 12.4722 21.2646 12.3202 21.5145 12.2164C21.7643 12.1126 22.0322 12.0592 22.3028 12.0592C22.5733 12.0592 22.8412 12.1126 23.0911 12.2164C23.341 12.3202 23.5679 12.4722 23.7589 12.6639L37.4633 26.3683C37.655 26.5593 37.807 26.7862 37.9108 27.0361C38.0145 27.286 38.068 27.5539 38.068 27.8244C38.068 28.095 38.0145 28.3629 37.9108 28.6127C37.807 28.8626 37.655 29.0895 37.4633 29.2805Z" fill="#343330"/>
+                    </svg>
+                </span>
+                </h1>
+                Weekly Planner!
+            </h2>
         </section>
 
-        <section class="timetable-availability-wrapper">
-            <div class="availability-container">
-                <h3 class="section-header">Availability</h3>
-                <ul class="availability-list" id="availability-list"></ul>
-                <button class="book-room">Book a Room</button>
-            </div>
-        </section>
 
-        <section class="tasks-section">
-            <h2>Tasks</h2>
-            <div class="task-columns">
-                <div class="task-column">
-                    <h3>To Do</h3>
-                    <ul class="task-list" id="todo-list"></ul>
-                    <button class="add-task" onclick="addTask('todo')">+ New Task</button>
+        <div class="relative-wrapper">
+            <!-- Pink shadow background -->
+            <section class="white-background"></section>
+            
+            <div class="pink-background-shadow"></div>
+            
+            <div class="timetable-availability-wrapper">
+                <!-- Time Column (Time Stamps) -->
+                <div class="time-column">
+                    <div class="time-slot">9 AM</div>
+                    <div class="time-slot">10 AM</div>
+                    <div class="time-slot">11 AM</div>
+                    <div class="time-slot">12 PM</div>
+                    <div class="time-slot">1 PM</div>
+                    <div class="time-slot">2 PM</div>
+                    <div class="time-slot">3 PM</div>
+                    <div class="time-slot">4 PM</div>
+                    <div class="time-slot">5 PM</div>
                 </div>
-        
-                <div class="task-column">
-                    <h3>Doing</h3>
-                    <ul class="task-list" id="doing-list"></ul>
-                    <button class="add-task" onclick="addTask('doing')">+ New Task</button>
+
+                <!-- Timetable -->
+                <div class="timetable-container">
+                    <table class="timetable">
+                        <thead>
+                            <tr>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                            <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                        </tbody>
+                    </table>
                 </div>
-        
-                <div class="task-column">
-                    <h3>Done</h3>
-                    <ul class="task-list" id="done-list"></ul>
-                    <button class="add-task" onclick="addTask('done')">+ New Task</button>
+
+                <!-- Availability Block -->
+                <div class="availability-container">
+                    <h3>Availability</h3>
+                    <ul class="availability-list">
+                        <li>Wed 16 Oct - 10 am - 11 am</li>
+                        <li>Wed 16 Oct - 10 am - 11 am</li>
+                        <li>Wed 16 Oct - 10 am - 11 am</li>
+                    </ul>
+                    <button class="book-room">Book a Room</button>
                 </div>
             </div>
-            <div class="progress-bar" id="progress-bar">
-                <div class="progress" id="progress" style="width: 0%;"></div>
-            </div>
-        </section>        
+        </div>
     </main>
 
-    <script src="../js/dashboard.js"></script>
+    <script src="../js/dashboard.js"></script> <!-- Link to JavaScript -->
 </body>
 </html>
