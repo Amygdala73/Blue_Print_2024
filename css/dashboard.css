@@ -85,6 +85,7 @@ body.overflow-hidden {
 .sidebar .sign-out-cta {
   font-weight: 600;
   font-size: 2rem;
+  transform: rotate(180deg);
 }
 
 /* radio buttons for view options */
