@@ -46,7 +46,7 @@ body {
 /* Header Section */
 .header h1 {
     font-size: 32px;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
     margin-left: 30px;
     color: #000;
     font-family: 'Tahoma', sans-serif;
@@ -65,25 +65,57 @@ body {
 .white-background {
     background-color: white;
     width: 1183.046px;
-    height: 602.742px;
+    height: 60px; /* Set a smaller height for the collapsed state */
     flex-shrink: 0;
     border-radius: 10px;
     border: 2.04px solid #333;
-    position: absolute; /* Set this to absolute for layering */
-    z-index: 1; 
+    position: absolute;
+    z-index: 1;
     margin-top: -70px;
-
+    transition: height 0.3s ease; /* Add transition for smooth collapsing */
 }
+
+.collapsed .white-background {
+    height: 60px; /* Collapsed height */
+    margin-top: -191px;
+}
+
+.expanded .white-background {
+    height: 602.742px; /* Expanded height */
+}
+
 /* Updated the heading and arrow styles */
+/* Style for the Timetable heading */
 .heading-with-arrow {
     display: flex;
     align-items: center;
     font-size: 32px;
     font-weight: bold;
-    margin-left: 40px; /* Aligns with the left padding of the white box */
-    cursor: pointer; /* Make it clickable */
+    cursor: pointer;
+    background-color: transparent; /* Place it within the white box */
+    padding: 10px 20px; /* Ensure padding for a nice layout */
+    border-radius: 10px; /* Rounded corners */
+    position: relative;
+    z-index: 2; /* Ensure it stays on top of the pink shadow */
+    margin-left: 0;
+    width: fit-content; /* Adjust to fit content */
+    top: -5px; /* Move the text up */
+}
 
+
+.collapsed .heading-with-arrow {
+    background-color: transparent; /* White background for the heading */
+    padding: 10px 20px; /* Adjust padding */
+    border-radius: 10px; /* Rounded corners */
+    width: fit-content; /* Adjust width to fit content */
+    top:-58px;
     
+}
+
+
+.arrow {
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
 .heading-with-arrow svg {
@@ -96,30 +128,39 @@ body {
 }
 
 .white-box {
-    background-color: white;
+    background-color: transparent;
     width: 100%;
     padding: 20px;
     margin-top: 20px; /* Space between white box and timetable */
     margin-bottom: -5px;
     border-radius: 10px;
     margin-left: 20px;
-    height: 30px;
+    height: 20px;
     position: relative;
     z-index: 2;
     display: flex; /* Added to ensure the arrow and text stay on the same row */
     align-items: center; /* Ensures vertical alignment within the white box */
 }
-/* White Box for Heading */
-.white-box {
-    background-color: white;
-    width: 100%;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 10px;
-    margin-left: 20px;
+
+
+
+.collapsed .white-box {
+    background: none;
+    border: none;
+    height: 60px; /* Adjust height when collapsed */
     display: flex;
-    align-items: center;
+    align-items: center; /* Ensures vertical alignment */
+    justify-content: flex-start; /* Aligns content to the left */
+    padding: 0; /* Remove any padding */
 }
+
+.expanded .white-box {
+    height: auto; /* Expanded height remains unchanged */
+    padding: 20px; /* Keep padding for expanded state */
+    background-color: transparent;
+    border: none;
+}
+
 
 /* Heading with Arrow */
 
@@ -148,16 +189,26 @@ body {
 
 /* Pink Background Shadow */
 .pink-background-shadow {
-    background-color: #FF9C9C; /* Coral/Pink solid background */
+    background-color: #FF9C9C;
     position: absolute;
-    top: -50px; /* Adjust this value to move down */
-    right: -105px; /* Adjust this value to move left */
-    width: 108%; /* Same width as the timetable */
-    height: 123%; /* Same height as the timetable */
-    border-radius: 10px; /* Rounded corners */
-    z-index: 0; /* Make sure it's behind everything */
+    top: -50px;
+    right: -105px;
+    width: 108%;
+    height: 123%;
+    border-radius: 10px;
+    z-index: 0;
+    transition: height 0.3s ease; /* Smooth transition for collapsing */
 }
 
+.collapsed .pink-background-shadow {
+    height: 70px; /* Adjust height for the pink background when collapsed */
+    margin-top: -140px;
+    margin-left: -20;
+}
+
+.expanded .pink-background-shadow {
+    height: 123%; /* Full height when expanded */
+}
 /* Timetable and Availability Wrapper */
 .timetable-availability-wrapper {
     display: flex;
@@ -176,13 +227,20 @@ body {
     overflow: hidden;
 }
 
+/* Timetable container visibility */
 .collapsed .timetable-availability-wrapper {
-    max-height: 0; /* Collapsed state */
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 
 .expanded .timetable-availability-wrapper {
-    max-height: 500px; /* Expanded state */
+    max-height: 500px;
+    opacity: 1;
 }
+
+
 
 .timetable {
     width: 100%;
@@ -256,6 +314,24 @@ body {
     height: 30px;
 }
 
+/* Styling for the collapsed state */
+.collapsed .timetable-availability-wrapper {
+    display: none; /* Hide the timetable and availability when collapsed */
+}
+
+.expanded .timetable-availability-wrapper {
+    display: flex; /* Show timetable when expanded */
+}
+
+.white-box.collapsed {
+    height: 60px; /* Adjust height when collapsed */
+    border-radius: 10px; /* Rounded corners */
+}
+
+.white-box.expanded {
+    height: auto; /* Adjust height when expanded */
+    border-radius: 10px; /* Maintain rounded corners */
+}
 
 /* Availability Section */
 .availability-container {

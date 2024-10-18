@@ -99,11 +99,23 @@
         document.addEventListener("DOMContentLoaded", function () {
             const heading = document.querySelector(".heading-with-arrow");
             const timetableWrapper = document.querySelector(".relative-wrapper");
+            const whiteBox = document.querySelector(".white-box");
 
             // Add click event to the arrow/heading to toggle collapsed/expanded state
             heading.addEventListener("click", function () {
+                // Toggle the classes for collapsing and expanding
                 timetableWrapper.classList.toggle("collapsed");
                 timetableWrapper.classList.toggle("expanded");
+                whiteBox.classList.toggle("collapsed");
+                whiteBox.classList.toggle("expanded");
+
+                // Adjust the height of the white box and maintain the pink background
+                const pinkBackground = document.querySelector(".pink-background-shadow");
+                if (whiteBox.classList.contains("collapsed")) {
+                    pinkBackground.style.height = "70px"; // Adjust pink background height when collapsed
+                } else {
+                    pinkBackground.style.height = "123%"; // Reset to full height when expanded
+                }
             });
 
             // Action for "Book a Room" button
