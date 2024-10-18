@@ -141,6 +141,17 @@ const renderPrj = (): void => {
             projectLogo.className = "bx bx-briefcase-alt-2"
             const projectName = document.createElement("span");
             projectName.textContent = prjInfo[0];
+
+            projectLogo.addEventListener('mouseover', (): void => {
+               projectLogo.className = 'bx bx-minus-circle';
+            });
+            projectLogo.addEventListener('mouseout', (): void => {
+               projectLogo.className = "bx bx-briefcase-alt-2";
+            });
+            projectLogo.addEventListener('click', (): void => {
+               newPrj.remove();
+               localStorage.removeItem(prjInfo[0]);
+            });
             
             newPrj.appendChild(projectLogo);
             newPrj.appendChild(projectName);

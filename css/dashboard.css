@@ -42,7 +42,7 @@ body.overflow-hidden {
   cursor: pointer;
 }
 
-.sidebar .projects i {
+.sidebar .projects .bx {
   font-size: 1.8rem;
 }
 

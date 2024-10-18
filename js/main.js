@@ -125,6 +125,16 @@ const renderPrj = () => {
                 projectLogo.className = "bx bx-briefcase-alt-2";
                 const projectName = document.createElement("span");
                 projectName.textContent = prjInfo[0];
+                projectLogo.addEventListener('mouseover', () => {
+                    projectLogo.className = 'bx bx-minus-circle';
+                });
+                projectLogo.addEventListener('mouseout', () => {
+                    projectLogo.className = "bx bx-briefcase-alt-2";
+                });
+                projectLogo.addEventListener('click', () => {
+                    newPrj.remove();
+                    localStorage.removeItem(prjInfo[0]);
+                });
                 newPrj.appendChild(projectLogo);
                 newPrj.appendChild(projectName);
                 sidebarTop === null || sidebarTop === void 0 ? void 0 : sidebarTop.insertBefore(newPrj, lastEle);
