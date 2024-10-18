@@ -125,12 +125,14 @@ deleteTaskCTA!.addEventListener("click", () => {
 const iconCount = parseInt(localStorage.getItem("iconify-count") ?? "0");
 
 const renderPrj = (): void => {
-   Object.keys(localStorage).slice(iconCount+2).forEach(key => {
+   Object.keys(localStorage).forEach(key => {
+      if (key.includes("iconify")) {
+         return;
+      }
       const value = localStorage.getItem(key);
       if (value) {
          try {
             const prjInfo = JSON.parse(value);
-            console.log(`${key}:`, prjInfo);
             const sidebarTop = document.getElementById("sidebar-top");
             const lastEle = document.getElementById("add-project");
    
