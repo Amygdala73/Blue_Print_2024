@@ -58,3 +58,40 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const addTaskButton = document.getElementById("add-task-cta");
+    const overlay = document.querySelector(".overlay");
+    const closeButton = overlay.querySelector(".close-button");
+
+    // Show overlay when clicking "Add Task"
+    addTaskButton.addEventListener("click", () => {
+        overlay.classList.remove("hide");
+    });
+
+    // Hide overlay when clicking close button
+    closeButton.addEventListener("click", () => {
+        overlay.classList.add("hide");
+    });
+
+    // Hide overlay if clicked outside of the overlay content
+    overlay.addEventListener("click", (event) => {
+        if (event.target === overlay) {
+            overlay.classList.add("hide");
+        }
+    });
+
+    // Form submit action (you can add the backend logic here)
+    overlay.querySelector(".add-task-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        // Capture form data here
+        console.log("New Task Added:", {
+            name: document.getElementById("task-name").value,
+            description: document.getElementById("task-desc").value,
+            dueDate: `${document.getElementById("task-day").value}-${document.getElementById("task-month").value}-${document.getElementById("task-year").value}`,
+            status: document.getElementById("task-status").value
+        });
+
+        // Close overlay after task is added
+        overlay.classList.add("hide");
+    });
+});

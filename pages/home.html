@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WorkWise Dashboard</title>
     <link rel="stylesheet" href="../css/home.css"> <!-- Link to your CSS -->
-    <link rel="stylesheet" href="../css/dashboard.css"> <!-- Link to your CSS -->
 </head>
 <body>
      <!-- Sidebar for navigation -->
@@ -37,6 +36,38 @@
             <button class="button sign-out-cta">Sign out</button>
         </div>
     </aside>
+
+    <div class="overlay hide">
+        <div class="overlay-content">
+            <button class="close-button">✕</button>
+            <form class="add-task-form">
+                <h2>Add Task</h2>
+                <label for="task-name">Name</label>
+                <input type="text" id="task-name" name="name" required>
+                
+                <label for="task-desc">Description</label>
+                <textarea id="task-desc" name="description"></textarea>
+                
+                <label for="task-day">Due date</label>
+                <div>
+                    <input type="number" id="task-day" name="day" placeholder="Day" min="1" max="31" required>
+                    <input type="number" id="task-month" name="month" placeholder="Month" min="1" max="12" required>
+                    <input type="number" id="task-year" name="year" placeholder="Year" min="2024" required>
+                </div>
+                
+                <label for="task-status">Status</label>
+                <select id="task-status" name="status">
+                    <option value="todo">To do</option>
+                    <option value="doing">Doing</option>
+                    <option value="done">Done</option>
+                </select>
+                
+                <button type="submit" class="button regular-button">Add task</button>
+            </form>
+        </div>
+    </div>
+
+    
 
     <!-- Main content section -->
     <main class="main-content">
