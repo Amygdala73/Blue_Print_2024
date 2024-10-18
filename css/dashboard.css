@@ -5,20 +5,28 @@ body.overflow-hidden {
 
 .content-container {
   padding-block: var(--space-32);
+  padding-top: 0;
 }
 
-/* header */
-.header .title {
+/* siderbar */
+.siderbar {
+  width: 254px;
+  height: 100vh;
+  background-color: #FF9C9C;
+  border-right: 2px solid black;
+}
+
+.siderbar .title {
   font-weight: 600;
   font-size: var(--font-size-24);
 }
 
-.header .buttons-container {
+.siderbar .buttons-container {
   display: flex;
   gap: var(--space-16);
 }
 
-.header .sign-out-cta {
+.siderbar .sign-out-cta {
   font-weight: 600;
 }
 
@@ -251,22 +259,22 @@ body.overflow-hidden {
   margin-right: -16px;
 }
 
-.set-task-overlay .header {
+.set-task-overlay .siderbar {
   font-weight: 600;
   font-size: var(--font-size-24);
 }
 
-.view-task-overlay .header {
+.view-task-overlay .siderbar {
   font-weight: 600;
   font-size: var(--font-size-16);
   margin-top: var(--space-16);
 }
 
-.view-task-overlay .header.no-margin {
+.view-task-overlay .siderbar.no-margin {
   margin-top: 0;
 }
 
-.view-task-overlay .header.min-width {
+.view-task-overlay .siderbar.min-width {
   min-width: 90px;
 }
 
@@ -290,6 +298,20 @@ body.overflow-hidden {
   display: flex;
   gap: var(--space-16);
   margin-top: var(--space-32);
+}
+
+.header .title {
+  font-weight: 600;
+  font-size: var(--font-size-24);
+}
+
+.header .buttons-container {
+  display: flex;
+  gap: var(--space-16);
+}
+
+.header .sign-out-cta {
+  font-weight: 600;
 }
 
 .notification {
@@ -342,4 +364,8 @@ body.overflow-hidden {
     grid-row: auto / auto;
     height: auto;
   }
+  .milkwhite-background {
+    background-color: #fdf2c9;
+  }
+  
 }
