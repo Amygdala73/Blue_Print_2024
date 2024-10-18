@@ -1,0 +1,46 @@
+/* Task management styles */
+.tasks-section {
+    margin-top: 40px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task-columns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-column {
+    width: 30%;
+}
+
+.task-column h3 {
+    text-align: center;
+    color: #333;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-card {
+    background-color: #f5f5f5;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.add-task {
+    display: block;
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

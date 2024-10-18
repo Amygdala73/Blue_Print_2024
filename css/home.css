@@ -22,11 +22,6 @@ body {
     text-align: center;
 }
 
-.siderbar .buttons-container {
-    display: flex;
-    gap: var(--space-16);
-  }
-
 .nav-list {
     list-style: none;
     padding: 0;
@@ -254,6 +249,9 @@ body {
     border-spacing: 0;
     overflow: hidden;
 }
+.selected {
+    background-color: lightgreen; /* Change the color of selected cells */
+}
 
 /* Top-left corner */
 .timetable th:first-child {
@@ -340,16 +338,19 @@ body {
 
 /* Availability Section */
 .availability-container {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
     background-color: #edf8f4;
     padding: 10px;
     border-radius: 10px;
     text-align: center;
     margin-left: 20px;
     width: 400px;
-    height: 450px;
+    height: 450px; /* Fixed height */
     flex-shrink: 0;
+    justify-content: space-between; /* Ensure button stays at the bottom */
 }
+
 .availability-list {
     color: #000;
     font-family: Roboto;
@@ -357,12 +358,12 @@ body {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-}
-
-.availability-list {
     list-style: none;
     padding: 0;
     margin-bottom: 20px;
+    overflow-y: auto; /* Add scroll if list overflows */
+    flex-grow: 1; /* Take up the remaining space */
+    max-height: 300px; /* Limit the height of the list */
 }
 
 .availability-list li {
@@ -380,202 +381,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
     width: 70%;
-    margin-top: 200px;
+    margin: 0 auto;
+    flex-shrink: 0; /* Prevent the button from shrinking */
 }
 
-@import url(https://fonts.googleapis.com/css?family=Muli);
-*{transition:all 0.5s;-webkit-transition:all 0.5s;}
-
-.toggle{
-  font-size:30px;
-  border:1px solid black;
-  border-radius:30px;
- display:inline-block;
- height:40px;
-  width:40px;
-  cursor:pointer;
-}
-.ico{
-  margin-left:7px;
-  margin-top:-4px;
-}
-.toggle:hover{
-  -ms-transform: rotate(360deg); /* IE 9 */
-    -webkit-transform: rotate(360deg); /* Safari */
-    transform: rotate(360deg);
-}
-
-.sidebar h2{
-  color:white;
-  text-align:center;
-  font-family: 'Muli', sans-serif;
-}
-
-.sidebar.active{
-  right:0px;
-}
-
-.notibox{
-  color:white;
-  font-family: 'Muli', sans-serif;
-  background-color:#6944ad;
-  width:calc(100% - 60px);
-  padding:15px;
-  margin:15px;
-  border-radius:4px;
-  position:relative;
-}
-
-.cancel{
-  position:absolute;
-  right:7px;
-  top:10px;
-  cursor:pointer;
-  padding:3px;
-  padding-left:8px;
-  padding-right:8px;
-  border-radius:20px;
-}
-
-.cancel:hover{
-  color:black;
-  background-color:white;
-}
-
-.gone{
-  display:none;
-}
-
-.buttons-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    margin-top: 20px;
-}
-
-.button {
-    padding: 10px;
-    width: 100%;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    text-align: center;
-    transition: background-color 0.3s ease, opacity 0.3s ease;
-}
-
-.blue-background {
-    background-color: #3498db;
-    color: white;
-}
-
-.milkwhite-background {
-    background-color: #fdf2c9; /* Your preferred button color */
-    color: black;
-}
-
-.sign-out-cta {
-    background-color: #e74c3c;
-    color: white;
-}
-
-.button:hover {
-    opacity: 0.85;
-}
-
-.overlay {
-    display: grid;
-    place-items: center;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Dim background */
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    overflow: auto;
-}
-
-.overlay.hide {
-    display: none;
-}
-
-.overlay-content {
-    background-color: #f16161; /* Adjusted color */
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 400px; /* Adjust the max width */
-    position: relative;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    text-align: left;
-}
-
-.overlay-content h2 {
-    text-align: center; /* Center the title */
-    margin-bottom: 20px;
-}
-
-.overlay-content label {
-    display: block;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.overlay-content input, 
-.overlay-content textarea, 
-.overlay-content select {
-    width: 100%; /* Full width */
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-.overlay-content textarea {
-    resize: none;
-    height: 80px; /* Adjusted height for text area */
-}
-
-.overlay-content div {
-    display: flex;
-    gap: 5px; /* Space between the inputs */
-    justify-content: space-between;
-}
-
-.overlay-content div input {
-    width: calc(33.33% - 4px); /* Ensures three inputs fit evenly */
-}
-
-.overlay-content button[type="submit"] {
-    background-color: #a8d5ba; /* Light green button */
-    border: none;
-    color: #000;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%; /* Full width */
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
-}
-
-.overlay-content button[type="submit"]:hover {
-    background-color: #88b998;
-}
-
-.close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #3498db;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 16px;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-}
