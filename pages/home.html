@@ -16,9 +16,7 @@
             <li><a href="#">COMP1511 Assessment 1</a></li>
             <li><a href="#">COMP1511 Assessment 2</a></li>
         </ul>
-        <div class="toggle">
-            <div class="ico">↻</div>
-        </div>
+
         <h2>Notifications</h2>
         <div class="notibox">
             Friend has new availability.
@@ -109,7 +107,6 @@
             <h1>COMP1511 Assessment 1</h1>
         </section>
         <!-- New White Box Section -->
-
         <section class="white-box">
             <h2 class="heading-with-arrow">
                 <span class="arrow">
@@ -168,16 +165,12 @@
                 <!-- Availability Block -->
                 <div class="availability-container">
                     <h3>Availability</h3>
-                    <section class = "availability-block">
-                        <ul class="availability-list">
-                            <!-- Dynamically updated time slots will be inserted here -->
-                        </ul>
-                    </section>
+                    <ul class="availability-list">
+                        <li>Wed 16 Oct - 10 am - 11 am</li>
+                        <li>Wed 16 Oct - 10 am - 11 am</li>
+                        <li>Wed 16 Oct - 10 am - 11 am</li>
+                    </ul>
                     <button class="book-room">Book a Room</button>
-
-
-
-                    
                 </div>
             </div>
         </div>
@@ -210,83 +203,16 @@
             // Action for "Book a Room" button
             const bookRoomButton = document.querySelector(".book-room");
             bookRoomButton.addEventListener("click", function () {
-                window.location.href = "https://freerooms.devsoc.app/";
+                alert("Booking a room is currently unavailable. Please try again later.");
             });
 
             // Action for availability list items
             document.querySelectorAll('.availability-list li').forEach(item => {
                 item.addEventListener('click', function () {
                     alert('You selected: ' + item.textContent);
-                    
                 });
             });
         });
-    document.addEventListener("DOMContentLoaded", function () {
-        let isMouseDown = false;
-        const table = document.querySelector('.timetable');
-        const availabilityList = document.querySelector('.availability-list'); // The list that shows availability
-        const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']; // Day labels
-        const times = ['9 AM', '10 AM', '11 AM', '12 PM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM']; // Time labels
-
-        // Mouse down event
-        table.addEventListener('mousedown', function (event) {
-            if (event.target.tagName === 'TD') {
-                isMouseDown = true;
-                event.target.classList.add('selected'); // Add selected class
-                event.preventDefault(); // Prevent text selection
-                updateAvailability(); // Update availability when a cell is clicked
-            }
-        });
-
-        // Mouse move event (for dragging)
-        table.addEventListener('mousemove', function (event) {
-            if (isMouseDown && event.target.tagName === 'TD') {
-                event.target.classList.add('selected'); // Mark cell as selected when dragging over it
-                updateAvailability(); // Update availability during dragging
-            }
-        });
-
-        // Mouse up event
-        document.addEventListener('mouseup', function () {
-            isMouseDown = false; // Stop dragging
-        });
-
-        // Optional: double-click to toggle the "selected" state
-        table.addEventListener('click', function (event) {
-            if (event.target.tagName === 'TD') {
-                event.target.classList.toggle('selected'); // Toggle selected state on double-click
-                updateAvailability(); // Update availability when a cell is double-clicked
-            }
-        });
-
-        // Function to update the availability list
-        function updateAvailability() {
-            const selectedCells = table.querySelectorAll('.selected');
-            let selectedTimes = [];
-
-            selectedCells.forEach(cell => {
-                // Get row and column index of the selected cell
-                const rowIndex = cell.parentElement.rowIndex;
-                const colIndex = cell.cellIndex;
-
-                // Map the rowIndex to time and colIndex to day
-                const time = times[rowIndex];
-                const day = days[colIndex];
-
-                // Push the formatted time slot (e.g., "Monday 9 AM")
-                selectedTimes.push(`${day} - ${time}`);
-            });
-
-            // Update the availability list with the selected times
-            availabilityList.innerHTML = ''; // Clear the current list
-            selectedTimes.forEach(timeSlot => {
-                const li = document.createElement('li');
-                li.textContent = timeSlot;
-                availabilityList.appendChild(li);
-            });
-        }
-    });
-
     </script>
 </body>
 </html>
