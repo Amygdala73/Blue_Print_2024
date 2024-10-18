@@ -25,6 +25,7 @@
             <h1>COMP1511 Assessment 1</h1>
         </section>
         <!-- New White Box Section -->
+
         <section class="white-box">
             <h2 class="heading-with-arrow">
                 <span class="arrow">
@@ -121,13 +122,14 @@
             // Action for "Book a Room" button
             const bookRoomButton = document.querySelector(".book-room");
             bookRoomButton.addEventListener("click", function () {
-                alert("Booking a room is currently unavailable. Please try again later.");
+                window.location.href = "https://freerooms.devsoc.app/";
             });
 
             // Action for availability list items
             document.querySelectorAll('.availability-list li').forEach(item => {
                 item.addEventListener('click', function () {
                     alert('You selected: ' + item.textContent);
+                    
                 });
             });
         });

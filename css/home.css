@@ -197,22 +197,22 @@ body {
     height: 123%;
     border-radius: 10px;
     z-index: 0;
-    transition: height 0.3s ease; /* Smooth transition for collapsing */
+    transition: height 0.3s ease, top 0.3s ease; 
 }
 
 .collapsed .pink-background-shadow {
-    height: 70px; /* Adjust height for the pink background when collapsed */
+    height: 70px; 
     margin-top: -140px;
     margin-left: -20;
 }
 
 .expanded .pink-background-shadow {
-    height: 123%; /* Full height when expanded */
+    height: 123%; 
 }
 /* Timetable and Availability Wrapper */
 .timetable-availability-wrapper {
     display: flex;
-    justify-content: flex-start; /* Align items to the left */
+    justify-content: flex-start; 
     align-items: flex-start;
     gap: 10px;
     margin-left: 20px;
@@ -245,7 +245,7 @@ body {
 .timetable {
     width: 100%;
     table-layout: fixed;
-    border-collapse: separate; /* Use 'separate' instead of 'collapse' */
+    border-collapse: separate;
     border-spacing: 0;
     overflow: hidden;
 }
