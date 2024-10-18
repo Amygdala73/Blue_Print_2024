@@ -3,31 +3,89 @@ body.overflow-hidden {
   overflow: hidden;
 }
 
-.content-container {
-  padding-block: var(--space-32);
-  padding-top: 0;
-}
-
-/* siderbar */
-.siderbar {
+/* sidebar */
+.sidebar {
   width: 254px;
   height: 100vh;
   background-color: #FF9C9C;
   border-right: 2px solid black;
 }
 
-.siderbar .title {
-  font-weight: 600;
-  font-size: var(--font-size-24);
+.sidebar .logo {
+  width: 100%;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  border-bottom: 2px solid black;
 }
 
-.siderbar .buttons-container {
+.sidebar .logo .logo-img {
+  width: 50px;
+  border-radius: 100%;
+}
+
+.sidebar .title {
+  font-size: 1.8rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.sidebar .projects {
+  align-items: center;
+  column-gap: 10px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 15px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.sidebar .projects .bx {
+  font-size: 1.8rem;
+}
+
+.sidebar .projects span {
+  font-size: 1.8rem;
+}
+
+.sidebar .add-project {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  padding: 10px;
+}
+
+.sidebar .add-project #add-btn {
+  cursor: pointer;
+  font-size: 1.8rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sidebar .bottom {
+  padding: 5px 20px;
+  font-size: 2rem;
+  border-top: 2px solid black;
+}
+
+.sidebar .bottom i {
+  cursor: pointer;
+}
+
+.sidebar .bottom .user-icon {
+  font-size: 2.5rem;
+}
+
+.sidebar .buttons-container {
   display: flex;
   gap: var(--space-16);
 }
 
-.siderbar .sign-out-cta {
+.sidebar .sign-out-cta {
   font-weight: 600;
+  font-size: 2rem;
+  transform: rotate(180deg);
 }
 
 /* radio buttons for view options */
@@ -259,22 +317,22 @@ body.overflow-hidden {
   margin-right: -16px;
 }
 
-.set-task-overlay .siderbar {
+.set-task-overlay .header {
   font-weight: 600;
   font-size: var(--font-size-24);
 }
 
-.view-task-overlay .siderbar {
+.view-task-overlay .header {
   font-weight: 600;
   font-size: var(--font-size-16);
   margin-top: var(--space-16);
 }
 
-.view-task-overlay .siderbar.no-margin {
+.view-task-overlay .header.no-margin {
   margin-top: 0;
 }
 
-.view-task-overlay .siderbar.min-width {
+.view-task-overlay .header.min-width {
   min-width: 90px;
 }
 
