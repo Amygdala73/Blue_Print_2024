@@ -502,11 +502,66 @@ body {
 }
 
 .overlay-content {
-    background-color: #f16161; /* Same as your preferred color */
+    background-color: #f16161; /* Adjusted color */
     padding: 20px;
     border-radius: 10px;
-    max-width: 400px;
+    max-width: 400px; /* Adjust the max width */
     position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+.overlay-content h2 {
+    text-align: center; /* Center the title */
+    margin-bottom: 20px;
+}
+
+.overlay-content label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.overlay-content input, 
+.overlay-content textarea, 
+.overlay-content select {
+    width: 100%; /* Full width */
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.overlay-content textarea {
+    resize: none;
+    height: 80px; /* Adjusted height for text area */
+}
+
+.overlay-content div {
+    display: flex;
+    gap: 5px; /* Space between the inputs */
+    justify-content: space-between;
+}
+
+.overlay-content div input {
+    width: calc(33.33% - 4px); /* Ensures three inputs fit evenly */
+}
+
+.overlay-content button[type="submit"] {
+    background-color: #a8d5ba; /* Light green button */
+    border: none;
+    color: #000;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Full width */
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.overlay-content button[type="submit"]:hover {
+    background-color: #88b998;
 }
 
 .close-button {
@@ -518,4 +573,9 @@ body {
     border: none;
     border-radius: 50%;
     cursor: pointer;
+    font-size: 16px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
 }
