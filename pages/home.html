@@ -42,19 +42,50 @@
             <button class="close-button">✕</button>
             <form class="add-task-form">
                 <h2>Add Task</h2>
+    
+                <!-- Name Field -->
                 <label for="task-name">Name</label>
                 <input type="text" id="task-name" name="name" required>
                 
+                <!-- Description Field -->
                 <label for="task-desc">Description</label>
                 <textarea id="task-desc" name="description"></textarea>
                 
-                <label for="task-day">Due date</label>
+                <!-- Due Date Section -->
+                <label for="task-day">Start Date and Time</label>
                 <div>
                     <input type="number" id="task-day" name="day" placeholder="Day" min="1" max="31" required>
                     <input type="number" id="task-month" name="month" placeholder="Month" min="1" max="12" required>
                     <input type="number" id="task-year" name="year" placeholder="Year" min="2024" required>
                 </div>
                 
+                <!-- Start Time Section -->
+                <label for="task-day">Due Date and Time</label>
+                <div>
+                    <input type="number" id="task-day" name="day" placeholder="Day" min="1" max="31" required>
+                    <input type="number" id="task-month" name="month" placeholder="Month" min="1" max="12" required>
+                    <input type="number" id="task-year" name="year" placeholder="Year" min="2024" required>
+                </div>
+    
+                <!-- Priority Section -->
+                <label for="priority">Priority</label>
+                <input type="range" id="priority" name="priority" min="1" max="4" step="1">
+                <div class="priority-labels">
+                    <span>Urgent & Important</span>
+                    <span>Not Urgent & Important</span>
+                    <span>Not Urgent & Unimportant</span>
+                    <span>Urgent & Unimportant</span>
+                </div>
+    
+                <!-- Availability Section -->
+                <label for="availability">Availability</label>
+                <input type="range" id="availability" name="availability" min="1" max="2" step="1">
+                <div class="availability-labels">
+                    <span>Not Available</span>
+                    <span>Available</span>
+                </div>
+                
+                <!-- Status Section -->
                 <label for="task-status">Status</label>
                 <select id="task-status" name="status">
                     <option value="todo">To do</option>
@@ -62,10 +93,12 @@
                     <option value="done">Done</option>
                 </select>
                 
+                <!-- Submit Button -->
                 <button type="submit" class="button regular-button">Add task</button>
             </form>
         </div>
     </div>
+    
 
     
 
