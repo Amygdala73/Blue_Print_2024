@@ -249,6 +249,9 @@ body {
     border-spacing: 0;
     overflow: hidden;
 }
+.selected {
+    background-color: lightgreen; /* Change the color of selected cells */
+}
 
 /* Top-left corner */
 .timetable th:first-child {
@@ -335,16 +338,19 @@ body {
 
 /* Availability Section */
 .availability-container {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
     background-color: #edf8f4;
     padding: 10px;
     border-radius: 10px;
     text-align: center;
     margin-left: 20px;
     width: 400px;
-    height: 450px;
+    height: 450px; /* Fixed height */
     flex-shrink: 0;
+    justify-content: space-between; /* Ensure button stays at the bottom */
 }
+
 .availability-list {
     color: #000;
     font-family: Roboto;
@@ -352,12 +358,12 @@ body {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-}
-
-.availability-list {
     list-style: none;
     padding: 0;
     margin-bottom: 20px;
+    overflow-y: auto; /* Add scroll if list overflows */
+    flex-grow: 1; /* Take up the remaining space */
+    max-height: 300px; /* Limit the height of the list */
 }
 
 .availability-list li {
@@ -375,5 +381,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
     width: 70%;
-    margin-top: 200px;
+    margin: 0 auto;
+    flex-shrink: 0; /* Prevent the button from shrinking */
 }
+
