@@ -16,6 +16,14 @@
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/dashboard.css" />
     <script src="../js/dashboard.js" defer></script>
+    <style>
+      .buttons-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+    </style>
   </head>
   <body>
     <!-- Because body has height 100%, we need a container to wrap the individual 
@@ -41,6 +49,13 @@
           >
             Add task
           </button>
+              <!-- New Button to Login Page -->
+              <button
+              onclick="window.location.href='./login.html'"
+              class="button regular-button milkwhite-background"
+            >
+              Go to Login
+            </button>
           <button class="sign-out-cta">Sign out</button>
         </div>
       </div>
