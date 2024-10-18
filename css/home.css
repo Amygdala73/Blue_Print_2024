@@ -75,17 +75,14 @@ body {
 
 }
 
-.heading-with-arrow {
+.heading-with-arrow h2 h1 {
     display: flex; /* Ensure arrow and heading align horizontally */
     align-items: center; /* Vertically align the arrow and text */
     font-size: 32px;
     font-weight: bold;
 }
 
-.heading-with-arrow svg {
-    margin-right: 10px; /* Space between the arrow and text */
-    vertical-align: middle; /* Align SVG to the middle of text */
-}
+
 
 .white-box {
     background-color: white;
