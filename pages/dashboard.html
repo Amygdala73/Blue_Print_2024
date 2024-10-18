@@ -12,6 +12,8 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+    <!-- icon library -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- main css -->
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/dashboard.css" />
@@ -30,17 +32,28 @@
         ></iconify-icon>
         <p>The task was deleted</p>
       </div>
-      <!-- siderbar -->
-      <div class="siderbar flex flex-column items-center justify-between">
-        <h1 class="title">WorkWise</h1>
-        <div class="buttons-container">
-          <button
-            id="add-task-cta"
-            class="button regular-button blue-background"
-          >
-            Add task
-          </button>
-          <button class="sign-out-cta">Sign out</button>
+      <!-- sidebar -->
+      <div class="sidebar flex flex-column justify-between"> 
+        <div class="top" id="sidebar-top">
+          <div class="logo">
+            <i class='bx bx-briefcase'></i>
+            <span class="title">WorkWise</span>
+          </div>
+          <div class="add-project" id="add-project">
+            <i class='bx bx-plus-circle' id="add-btn"></i>
+            <span>Create Project</span>
+          </div>
+        </div>
+        <div class="bottom">
+          <div class="buttons-container">
+            <button
+              id="add-task-cta"
+              class="button regular-button blue-background"
+            >
+              Add task
+            </button>
+            <button class="sign-out-cta">Sign out</button>
+          </div>
         </div>
       </div>
       <!-- functional areas -->
@@ -437,6 +450,83 @@
         </div>
       </div>
     </div>
+    <!-- add + update project -->
+    <div id="set-project-overlay" class="overlay set-project-overlay hide">
+      <div class="overlay-content pink-background">
+        <!-- close button -->
+        <button
+          class="button circle-button blue-background flex justify-center items-center close-button"
+        >
+          <iconify-icon
+            icon="material-symbols:close-rounded"
+            style="color: black"
+            width="26"
+            height="26"
+          ></iconify-icon>
+        </button>
+        <h1 class="header">Add project</h1>
+        <form class="form" autocomplete="off" id="add-prj-form">
+          <label for="name" class="label">Name</label>
+          <input
+            type="text"
+            name="name"
+            id="project-name"
+            class="input white-background"
+            required
+          />
+          <label for="description" class="label">Description</label>
+          <textarea
+            name="description"
+            id="project-description"
+            rows="8"
+            class="textarea-input white-background"
+            required
+          ></textarea>
+          <h2 class="label">Due date</h2>
+          <div class="divided-inputs-container">
+            <div>
+              <label for="due-date-day" class="secondary-label">Day</label>
+              <input
+                type="text"
+                name="due-date-day"
+                id="project-due-date-day"
+                class="input white-background"
+                required
+              />
+            </div>
+            <div>
+              <label for="due-date-month" class="secondary-label">Month</label>
+              <input
+                type="text"
+                name="due-date-month"
+                id="project-due-date-month"
+                class="input white-background"
+                required
+              />
+            </div>
+            <div>
+              <label for="due-date-year" class="secondary-label">Year</label>
+              <input
+                type="text"
+                name="due-date-year"
+                id="project-due-date-year"
+                class="input white-background"
+                required
+              />
+            </div>
+          </div>          
+          <div class="text-center">
+            <button
+              type="submit"
+              class="button regular-button green-background cta-button"
+              id="submit-project"
+            >
+              Add project
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
     <!-- add + update task -->
     <div id="set-task-overlay" class="overlay set-task-overlay hide">
       <div class="overlay-content pink-background">
@@ -628,6 +718,6 @@
     <!-- import IconifyIcon web component -->
     <script src="https://code.iconify.design/iconify-icon/1.0.5/iconify-icon.min.js"></script>
     <!-- js -->
-    <script src="../js/main.js"></script>
+    <script type="module" src="../js/main.js"></script>
   </body>
 </html>

@@ -3,25 +3,46 @@ body.overflow-hidden {
   overflow: hidden;
 }
 
+<<<<<<< Updated upstream
 /* siderbar */
 .siderbar {
+=======
+/* sidebar */
+.sidebar {
+>>>>>>> Stashed changes
   width: 254px;
   height: 100vh;
   background-color: #FF9C9C;
   border-right: 2px solid black;
 }
 
-.siderbar .title {
-  font-weight: 600;
-  font-size: var(--font-size-24);
+.sidebar .logo {
+  width: 100%;
+  padding: 8px;
+  font-size: 2.2rem;
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+  border-bottom: 2px solid #e06767;
 }
 
-.siderbar .buttons-container {
+.sidebar .title {
+  font-size: var(--font-size-24);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.sidebar .add-project #add-btn {
+  cursor: pointer;
+}
+
+.sidebar .buttons-container {
   display: flex;
   gap: var(--space-16);
 }
 
-.siderbar .sign-out-cta {
+.sidebar .sign-out-cta {
   font-weight: 600;
 }
 
@@ -254,22 +275,22 @@ body.overflow-hidden {
   margin-right: -16px;
 }
 
-.set-task-overlay .siderbar {
+.set-task-overlay .header {
   font-weight: 600;
   font-size: var(--font-size-24);
 }
 
-.view-task-overlay .siderbar {
+.view-task-overlay .header {
   font-weight: 600;
   font-size: var(--font-size-16);
   margin-top: var(--space-16);
 }
 
-.view-task-overlay .siderbar.no-margin {
+.view-task-overlay .header.no-margin {
   margin-top: 0;
 }
 
-.view-task-overlay .siderbar.min-width {
+.view-task-overlay .header.min-width {
   min-width: 90px;
 }
 
