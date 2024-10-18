@@ -3,13 +3,8 @@ body.overflow-hidden {
   overflow: hidden;
 }
 
-<<<<<<< Updated upstream
-/* siderbar */
-.siderbar {
-=======
 /* sidebar */
 .sidebar {
->>>>>>> Stashed changes
   width: 254px;
   height: 100vh;
   background-color: #FF9C9C;
@@ -19,22 +14,67 @@ body.overflow-hidden {
 .sidebar .logo {
   width: 100%;
   padding: 8px;
-  font-size: 2.2rem;
   display: flex;
   align-items: center;
-  column-gap: 15px;
-  border-bottom: 2px solid #e06767;
+  column-gap: 10px;
+  border-bottom: 2px solid black;
+}
+
+.sidebar .logo .logo-img {
+  width: 50px;
+  border-radius: 100%;
 }
 
 .sidebar .title {
-  font-size: var(--font-size-24);
+  font-size: 1.8rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   letter-spacing: 1px;
   font-weight: bold;
 }
 
+.sidebar .projects {
+  align-items: center;
+  column-gap: 10px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 15px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.sidebar .projects i {
+  font-size: 1.8rem;
+}
+
+.sidebar .projects span {
+  font-size: 1.8rem;
+}
+
+.sidebar .add-project {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  padding: 10px;
+}
+
 .sidebar .add-project #add-btn {
   cursor: pointer;
+  font-size: 1.8rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sidebar .bottom {
+  padding: 5px 20px;
+  font-size: 2rem;
+  border-top: 2px solid black;
+}
+
+.sidebar .bottom i {
+  cursor: pointer;
+}
+
+.sidebar .bottom .user-icon {
+  font-size: 2.5rem;
 }
 
 .sidebar .buttons-container {
@@ -44,6 +84,7 @@ body.overflow-hidden {
 
 .sidebar .sign-out-cta {
   font-weight: 600;
+  font-size: 2rem;
 }
 
 /* radio buttons for view options */

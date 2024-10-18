@@ -2,8 +2,8 @@
 const radioViewOptions = document.querySelectorAll("input[name='view-option']");
 const listView = document.getElementById("list-view");
 const boardView = document.getElementById("board-view");
-const addTaskCTA = document.getElementById("add-task-cta");
-const setTaskOverlay = document.getElementById("set-task-overlay");
+// const addTaskCTA = document.getElementById("add-task-cta");
+// const setTaskOverlay = document.getElementById("set-task-overlay");
 const closeButtons = document.querySelectorAll(".close-button");
 const statusSelect = document.getElementById("status-select");
 const statusDropdown = document.getElementById("status-dropdown");
@@ -14,7 +14,7 @@ const notification = document.getElementById("notification");
 const addBtn = document.getElementById('add-btn');
 const setProjectOverlay = document.getElementById("set-project-overlay");
 const submitPrj = document.getElementById("submit-project") as HTMLButtonElement;
-const prjForm = document.getElementById('add-prj-form');
+const prjForm = document.getElementById('add-prj-form') as HTMLFormElement;
 const prjFormElements = prjForm?.querySelectorAll('input:not([type="submit"]), textarea');
 // the current active overlay
 let activeOverlay: any = null;
@@ -44,30 +44,19 @@ addBtn?.addEventListener('click', (): void => {
 // });
 
 // creating a project in sidebar
-submitPrj?.addEventListener('submit', (event): void => {
-   event.preventDefault();
+prjForm?.addEventListener('submit', (event): void => {
    const sidebarTop = document.getElementById("sidebar-top");
    const lastEle = document.getElementById("add-project");
    const prjName = (document.getElementById("project-name") as HTMLInputElement)?.value;
 
    let newPrj = document.createElement("div");
-
-   alert("asdfasd");
-
-   // sidebarTop?.insertBefore(newPrj, lastEle);
-   sidebarTop?.appendChild(newPrj);
-   // if (parentElement) {
-   //    // 创建新元素
-   //    const newElement = document.createElement(newElementType);
-      
-   //    // 将新元素添加到父元素
-   //    parentElement.appendChild(newElement);
-      
-   //    // 调用回调函数，传入新创建的元素
-   //    callback(newElement);
-   // } else {
-   //    console.error(`Parent element with id "${parentId}" not found.`);
-   // }
+   let prjInfo: string[] = []; 
+   prjInfo.push((document.getElementById("project-name") as HTMLInputElement)?.value);
+   prjInfo.push((document.getElementById("project-description") as HTMLTextAreaElement)?.value);
+   prjInfo.push((document.getElementById("project-due-date-day") as HTMLInputElement)?.value);
+   prjInfo.push((document.getElementById("project-due-date-month") as HTMLInputElement)?.value);
+   prjInfo.push((document.getElementById("project-due-date-year") as HTMLInputElement)?.value);
+   localStorage.setItem((document.getElementById("project-name") as HTMLInputElement)?.value, JSON.stringify(prjInfo));
 })
 
 // radio buttons for view option
@@ -89,22 +78,25 @@ radioViewOptions.forEach((radioButton) => {
    });
 });
 
-// add task
-addTaskCTA!.addEventListener("click", () => {
-   setTaskOverlay!.classList.remove("hide");
-   activeOverlay = setTaskOverlay;
-   // disable scrolling for content behind the overlay
-   document.body.classList.add("overflow-hidden");
-});
+// // add task
+// addTaskCTA!.addEventListener("click", () => {
+//    setTaskOverlay!.classList.remove("hide");
+//    activeOverlay = setTaskOverlay;
+//    // disable scrolling for content behind the overlay
+//    document.body.classList.add("overflow-hidden");
+// });
+
+// callback that closes overlays
+const closeOverlay = (): void => {
+   activeOverlay.classList.add("hide");
+   activeOverlay = null;
+   // reenable scrolling
+   document.body.classList.remove("overflow-hidden");
+}
 
 // close buttons inside overlays
 closeButtons.forEach((button) => {
-   button.addEventListener("click", () => {
-      activeOverlay.classList.add("hide");
-      activeOverlay = null;
-      // reenable scrolling
-      document.body.classList.remove("overflow-hidden");
-   });
+   button.addEventListener("click", closeOverlay);
 });
 
 // open status dropdown
@@ -114,12 +106,7 @@ statusSelect!.addEventListener("click", () => {
 
 // click a task
 taskItems.forEach((task) => {
-   task.addEventListener("click", () => {
-      viewTaskOverlay!.classList.remove("hide");
-      activeOverlay = viewTaskOverlay;
-      // disable scrolling for content behind the overlay
-      document.body.classList.add("overflow-hidden");
-   });
+   task.addEventListener("click", closeOverlay);
 });
 
 // delete a task
@@ -134,3 +121,36 @@ deleteTaskCTA!.addEventListener("click", () => {
       notification!.classList.remove("show");
    }, 3000);
 });
+
+const iconCount = parseInt(localStorage.getItem("iconify-count") ?? "0");
+
+const renderPrj = (): void => {
+   Object.keys(localStorage).slice(iconCount+2).forEach(key => {
+      const value = localStorage.getItem(key);
+      if (value) {
+         try {
+            const prjInfo = JSON.parse(value);
+            console.log(`${key}:`, prjInfo);
+            const sidebarTop = document.getElementById("sidebar-top");
+            const lastEle = document.getElementById("add-project");
+   
+            let newPrj = document.createElement("div");
+            newPrj.className = "projects flex";
+   
+            const projectLogo = document.createElement("i");
+            projectLogo.className = "bx bx-briefcase-alt-2"
+            const projectName = document.createElement("span");
+            projectName.textContent = prjInfo[0];
+            
+            newPrj.appendChild(projectLogo);
+            newPrj.appendChild(projectName);
+   
+            sidebarTop?.insertBefore(newPrj, lastEle);
+         } catch (e) {
+            return;
+         }
+      }
+   });
+}
+
+renderPrj();
