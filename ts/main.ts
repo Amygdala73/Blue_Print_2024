@@ -155,14 +155,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-   const addTaskButton = document.getElementById("add-task-cta");
    const overlay = document.querySelector(".overlay");
    const closeButton = overlay.querySelector(".close-button");
-
-   // Show overlay when clicking "Add Task"
-   addTaskButton.addEventListener("click", () => {
-      overlay.classList.remove("hide");
-   });
 
    // Hide overlay when clicking close button
    closeButton.addEventListener("click", () => {

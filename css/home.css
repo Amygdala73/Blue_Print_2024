@@ -182,7 +182,6 @@ body {
     border-radius: 10px; /* Rounded corners */
     width: fit-content; /* Adjust width to fit content */
     top:-58px;
-    
 }
 
 
@@ -313,8 +312,6 @@ body {
     max-height: 500px;
     opacity: 1;
 }
-
-
 
 .timetable {
     width: 100%;
