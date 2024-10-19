@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WorkWise Dashboard</title>
+    <link rel="stylesheet" href="../css/dashboard.css" />
     <link rel="stylesheet" href="../css/home.css"> <!-- Link to your CSS -->
 </head>
 <body>
@@ -174,6 +175,249 @@
                 </div>
             </div>
         </div>
+
+
+      <!-- functional areas -->
+      <div class="max-width-container flex-1">
+        <!-- radio buttons -->
+        <div class="radio-buttons-container">
+          <div class="max-width-container flex">
+            <div class="radio-container">
+              <input
+                type="radio"
+                id="list"
+                name="view-option"
+                value="list"
+                class="radio-input"
+                checked
+              />
+              <label for="list" class="radio-label">
+                <!-- list-bulleted -->
+                <iconify-icon
+                  icon="material-symbols:format-list-bulleted-rounded"
+                  style="color: black"
+                  width="24"
+                  height="24"
+                ></iconify-icon>
+                <span>List</span>
+              </label>
+            </div>
+            <div class="radio-container">
+              <input
+                type="radio"
+                id="board"
+                name="view-option"
+                value="board"
+                class="radio-input"
+              />
+              <label for="board" class="radio-label">
+                <!-- grid -->
+                <iconify-icon
+                  icon="ic:round-grid-view"
+                  style="color: black"
+                  width="24"
+                  height="24"
+                ></iconify-icon>
+                <span>Board</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- tasks -->
+        <div class="max-width-container">
+          <!-- board view -->
+          <div id="board-view" class="board-view">
+            <!-- list -->
+            <div>
+              <h2 class="list-header">
+                <span class="circle pink-background"></span
+                ><span class="text">To do</span>
+              </h2>
+              <ul class="tasks-list pink">
+                <li class="task-item">
+                  <button class="task-button">
+                    <div>
+                      <p class="task-name">Blueprint Hackathon</p>
+                      <p class="task-due-date">Due on October 19, 2024</p>
+                    </div>
+                    <!-- arrow -->
+                    <iconify-icon
+                      icon="material-symbols:arrow-back-ios-rounded"
+                      style="color: black"
+                      width="18"
+                      height="18"
+                      class="arrow-icon"
+                    ></iconify-icon>
+                  </button>
+                </li>
+                <li class="task-item">
+                  <button class="task-button">
+                    <div>
+                      <p class="task-name">Blueprint Hackathon</p>
+                      <p class="task-due-date">Due on October 19, 2024</p>
+                    </div>
+                    <!-- arrow -->
+                    <iconify-icon
+                      icon="material-symbols:arrow-back-ios-rounded"
+                      style="color: black"
+                      width="18"
+                      height="18"
+                      class="arrow-icon"
+                    ></iconify-icon>
+                  </button>
+                </li>
+                <li class="task-item">
+                  <button class="task-button">
+                    <div>
+                      <p class="task-name">Blueprint Hackathon</p>
+                      <p class="task-due-date">Due on October 19, 2024</p>
+                    </div>
+                    <!-- arrow -->
+                    <iconify-icon
+                      icon="material-symbols:arrow-back-ios-rounded"
+                      style="color: black"
+                      width="18"
+                      height="18"
+                      class="arrow-icon"
+                    ></iconify-icon>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <!-- list -->
+            <div>
+              <h2 class="list-header">
+                <span class="circle blue-background"></span
+                ><span class="text">Doing</span>
+              </h2>
+              <ul class="tasks-list blue">
+                <li class="task-item">
+                  <button class="task-button">
+                    <div>
+                      <p class="task-name">Blueprint Hackathon</p>
+                      <p class="task-due-date">Due on October 19, 2024</p>
+                    </div>
+                    <!-- arrow -->
+                    <iconify-icon
+                      icon="material-symbols:arrow-back-ios-rounded"
+                      style="color: black"
+                      width="18"
+                      height="18"
+                      class="arrow-icon"
+                    ></iconify-icon>
+                  </button>
+                </li>
+                <li class="task-item">
+                  <button class="task-button">
+                    <div>
+                      <p class="task-name">Blueprint Hackathon</p>
+                      <p class="task-due-date">Due on October 19, 2024</p>
+                    </div>
+                    <!-- arrow -->
+                    <iconify-icon
+                      icon="material-symbols:arrow-back-ios-rounded"
+                      style="color: black"
+                      width="18"
+                      height="18"
+                      class="arrow-icon"
+                    ></iconify-icon>
+                  </button>
+                </li>
+                <li class="task-item">
+                  <button class="task-button">
+                    <div>
+                      <p class="task-name">Blueprint Hackathon</p>
+                      <p class="task-due-date">Due on October 19, 2024</p>
+                    </div>
+                    <!-- arrow -->
+                    <iconify-icon
+                      icon="material-symbols:arrow-back-ios-rounded"
+                      style="color: black"
+                      width="18"
+                      height="18"
+                      class="arrow-icon"
+                    ></iconify-icon>
+                  </button>
+                </li>
+                <li class="task-item">
+                  <button class="task-button">
+                    <div>
+                      <p class="task-name">Blueprint Hackathon</p>
+                      <p class="task-due-date">Due on October 19, 2024</p>
+                    </div>
+                    <!-- arrow -->
+                    <iconify-icon
+                      icon="material-symbols:arrow-back-ios-rounded"
+                      style="color: black"
+                      width="18"
+                      height="18"
+                      class="arrow-icon"
+                    ></iconify-icon>
+                  </button>
+                </li>
+                <li class="task-item">
+                  <button class="task-button">
+                    <div>
+                      <p class="task-name">Blueprint Hackathon</p>
+                      <p class="task-due-date">Due on October 19, 2024</p>
+                    </div>
+                    <!-- arrow -->
+                    <iconify-icon
+                      icon="material-symbols:arrow-back-ios-rounded"
+                      style="color: black"
+                      width="18"
+                      height="18"
+                      class="arrow-icon"
+                    ></iconify-icon>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <!-- list -->
+            <div>
+              <h2 class="list-header">
+                <span class="circle green-background"></span
+                ><span class="text">Done</span>
+              </h2>
+              <ul class="tasks-list green">
+                <li class="task-item">
+                  <button class="task-button">
+                    <div>
+                      <p class="task-name">Blueprint Hackathon</p>
+                      <p class="task-due-date">Due on October 19, 2024</p>
+                    </div>
+                    <!-- arrow -->
+                    <iconify-icon
+                      icon="material-symbols:arrow-back-ios-rounded"
+                      style="color: black"
+                      width="18"
+                      height="18"
+                      class="arrow-icon"
+                    ></iconify-icon>
+                  </button>
+                </li>
+                <li class="task-item">
+                  <button class="task-button">
+                    <div>
+                      <p class="task-name">Blueprint Hackathon</p>
+                      <p class="task-due-date">Due on October 19, 2024</p>
+                    </div>
+                    <!-- arrow -->
+                    <iconify-icon
+                      icon="material-symbols:arrow-back-ios-rounded"
+                      style="color: black"
+                      width="18"
+                      height="18"
+                      class="arrow-icon"
+                    ></iconify-icon>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     </main>
 
     <script src="../js/dashboard.js"></script> <!-- Link to JavaScript -->
