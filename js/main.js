@@ -3,15 +3,7 @@ var _a;
 const radioViewOptions = document.querySelectorAll("input[name='view-option']");
 const listView = document.getElementById("list-view");
 const boardView = document.getElementById("board-view");
-// const addTaskCTA = document.getElementById("add-task-cta");
-// const setTaskOverlay = document.getElementById("set-task-overlay");
 const closeButtons = document.querySelectorAll(".close-button");
-const statusSelect = document.getElementById("status-select");
-const statusDropdown = document.getElementById("status-dropdown");
-const taskItems = document.querySelectorAll(".task-item");
-const viewTaskOverlay = document.getElementById("view-task-overlay");
-const deleteTaskCTA = document.getElementById("delete-task-cta");
-const notification = document.getElementById("notification");
 const addBtn = document.getElementById('add-btn');
 const setProjectOverlay = document.getElementById("set-project-overlay");
 const submitPrj = document.getElementById("submit-project");
@@ -27,18 +19,6 @@ addBtn === null || addBtn === void 0 ? void 0 : addBtn.addEventListener('click',
     // disable scrolling for content behind the overlay
     document.body.classList.add("overflow-hidden");
 });
-// function validateForm() {
-//    let isValid = true;
-//    prjFormElements?.forEach(element => {
-//       if (!(element as HTMLInputElement | HTMLTextAreaElement).checkValidity()) {
-//          isValid = false;
-//       }
-//    });
-//    submitPrj!.disabled = !isValid;
-// }
-// prjFormElements?.forEach(element => {
-//    element.addEventListener('input', validateForm);
-// });
 // creating a project in sidebar
 prjForm === null || prjForm === void 0 ? void 0 : prjForm.addEventListener('submit', (event) => {
     var _a, _b, _c, _d, _e, _f, _g;
@@ -54,30 +34,6 @@ prjForm === null || prjForm === void 0 ? void 0 : prjForm.addEventListener('subm
     prjInfo.push((_f = document.getElementById("project-due-date-year")) === null || _f === void 0 ? void 0 : _f.value);
     localStorage.setItem((_g = document.getElementById("project-name")) === null || _g === void 0 ? void 0 : _g.value, JSON.stringify(prjInfo));
 });
-// radio buttons for view option
-radioViewOptions.forEach((radioButton) => {
-    radioButton.addEventListener("change", (event) => {
-        const eventTarget = event.target;
-        const viewOption = eventTarget.value;
-        switch (viewOption) {
-            case "list":
-                boardView.classList.add("hide");
-                listView.classList.remove("hide");
-                break;
-            case "board":
-                listView.classList.add("hide");
-                boardView.classList.remove("hide");
-                break;
-        }
-    });
-});
-// // add task
-// addTaskCTA!.addEventListener("click", () => {
-//    setTaskOverlay!.classList.remove("hide");
-//    activeOverlay = setTaskOverlay;
-//    // disable scrolling for content behind the overlay
-//    document.body.classList.add("overflow-hidden");
-// });
 // callback that closes overlays
 const closeOverlay = () => {
     activeOverlay.classList.add("hide");
@@ -88,26 +44,6 @@ const closeOverlay = () => {
 // close buttons inside overlays
 closeButtons.forEach((button) => {
     button.addEventListener("click", closeOverlay);
-});
-// open status dropdown
-statusSelect.addEventListener("click", () => {
-    statusDropdown.classList.toggle("hide");
-});
-// click a task
-taskItems.forEach((task) => {
-    task.addEventListener("click", closeOverlay);
-});
-// delete a task
-deleteTaskCTA.addEventListener("click", () => {
-    activeOverlay.classList.add("hide");
-    activeOverlay = null;
-    // reenable scrolling
-    document.body.classList.remove("overflow-hidden");
-    // show notification & hide it after a while
-    notification.classList.add("show");
-    setTimeout(() => {
-        notification.classList.remove("show");
-    }, 3000);
 });
 const iconCount = parseInt((_a = localStorage.getItem("iconify-count")) !== null && _a !== void 0 ? _a : "0");
 const renderPrj = () => {
@@ -147,5 +83,119 @@ const renderPrj = () => {
         }
     });
 };
+const tasks = {
+    todo: [],
+    doing: [],
+    done: []
+};
+function addTask(status) {
+    const taskName = prompt("Enter task name:");
+    if (taskName) {
+        tasks[status].push(taskName);
+        renderTasks();
+    }
+}
+function renderTasks() {
+    document.getElementById('todo-list').innerHTML = tasks.todo.map(task => `<li>${task}</li>`).join('');
+    document.getElementById('doing-list').innerHTML = tasks.doing.map(task => `<li>${task}</li>`).join('');
+    document.getElementById('done-list').innerHTML = tasks.done.map(task => `<li>${task}</li>`).join('');
+    updateProgress();
+}
+function updateProgress() {
+    const totalTasks = tasks.todo.length + tasks.doing.length + tasks.done.length;
+    const completedTasks = tasks.done.length;
+    const progressPercentage = totalTasks ? (completedTasks / totalTasks) * 100 : 0;
+    document.getElementById('progress').style.width = progressPercentage + '%';
+}
+document.addEventListener("DOMContentLoaded", function () {
+    const heading = document.querySelector(".heading-with-arrow");
+    const timetableWrapper = document.querySelector(".relative-wrapper");
+    // Add click event to the arrow/heading to toggle collapsed/expanded state
+    heading.addEventListener("click", function () {
+        timetableWrapper.classList.toggle("collapsed");
+        timetableWrapper.classList.toggle("expanded");
+    });
+    // Action for "Book a Room" button
+    const bookRoomButton = document.querySelector(".book-room");
+    bookRoomButton.addEventListener("click", function () {
+        alert("Booking a room is currently unavailable. Please try again later.");
+    });
+    // Action for availability list items
+    document.querySelectorAll('.availability-list li').forEach(item => {
+        item.addEventListener('click', function () {
+            alert('You selected: ' + item.textContent);
+        });
+    });
+    // Action to remove the notification when cancel is clicked
+    const cancelIcon = document.querySelector(".notibox .cancel");
+    cancelIcon.addEventListener("click", function () {
+        const notificationBox = this.parentElement;
+        notificationBox.classList.add("gone");
+    });
+});
+document.addEventListener("DOMContentLoaded", function () {
+    const addTaskButton = document.getElementById("add-task-cta");
+    const overlay = document.querySelector(".overlay");
+    const closeButton = overlay.querySelector(".close-button");
+    // Show overlay when clicking "Add Task"
+    addTaskButton.addEventListener("click", () => {
+        overlay.classList.remove("hide");
+    });
+    // Hide overlay when clicking close button
+    closeButton.addEventListener("click", () => {
+        overlay.classList.add("hide");
+    });
+    // Hide overlay if clicked outside of the overlay content
+    overlay.addEventListener("click", (event) => {
+        if (event.target === overlay) {
+            overlay.classList.add("hide");
+        }
+    });
+    // Form submit action (you can add the backend logic here)
+    overlay.querySelector(".add-task-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        // Capture form data here
+        console.log("New Task Added:", {
+            name: document.getElementById("task-name").value,
+            description: document.getElementById("task-desc").value,
+            dueDate: `${document.getElementById("task-day").value}-${document.getElementById("task-month").value}-${document.getElementById("task-year").value}`,
+            status: document.getElementById("task-status").value
+        });
+        // Close overlay after task is added
+        overlay.classList.add("hide");
+    });
+});
+document.addEventListener("DOMContentLoaded", function () {
+    const heading = document.querySelector(".heading-with-arrow");
+    const timetableWrapper = document.querySelector(".relative-wrapper");
+    const whiteBox = document.querySelector(".white-box");
+    // Add click event to the arrow/heading to toggle collapsed/expanded state
+    heading.addEventListener("click", function () {
+        // Toggle the classes for collapsing and expanding
+        timetableWrapper.classList.toggle("collapsed");
+        timetableWrapper.classList.toggle("expanded");
+        whiteBox.classList.toggle("collapsed");
+        whiteBox.classList.toggle("expanded");
+        // Adjust the height of the white box and maintain the pink background
+        const pinkBackground = document.querySelector(".pink-background-shadow");
+        if (whiteBox.classList.contains("collapsed")) {
+            pinkBackground.style.height = "70px"; // Adjust pink background height when collapsed
+        }
+        else {
+            pinkBackground.style.height = "123%"; // Reset to full height when expanded
+        }
+    });
+    // Action for "Book a Room" button
+    const bookRoomButton = document.querySelector(".book-room");
+    bookRoomButton.addEventListener("click", function () {
+        alert("Booking a room is currently unavailable. Please try again later.");
+    });
+    // Action for availability list items
+    document.querySelectorAll('.availability-list li').forEach(item => {
+        item.addEventListener('click', function () {
+            alert('You selected: ' + item.textContent);
+        });
+    });
+});
 renderPrj();
 export {};

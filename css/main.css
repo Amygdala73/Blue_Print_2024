@@ -128,19 +128,19 @@ body {
   cursor: pointer;
 }
 
-.white-background {
+.white-background-color {
   background-color: var(--white);
 }
 
-.blue-background {
+.blue-background-color {
   background-color: var(--blue);
 }
 
-.pink-background {
+.pink-background-color {
   background-color: var(--pink);
 }
 
-.green-background {
+.green-background-color {
   background-color: var(--green);
 }
 

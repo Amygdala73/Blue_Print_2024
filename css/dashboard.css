@@ -77,11 +77,6 @@ body.overflow-hidden {
   font-size: 2.5rem;
 }
 
-.sidebar .buttons-container {
-  display: flex;
-  gap: var(--space-16);
-}
-
 .sidebar .sign-out-cta {
   font-weight: 600;
   font-size: 2rem;

@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WorkWise Dashboard</title>
-    <link rel="stylesheet" href="../css/home.css"> <!-- Link to your CSS -->
+    <!-- Link to your CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <!-- icon library -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-     <!-- Sidebar for navigation -->
-     <aside class="sidebar">
+    <!-- Sidebar for navigation -->
+    <!-- <aside class="sidebar">
         <div class="sidebar-header">
             <h2>WorkWise</h2>
         </div>
@@ -35,7 +39,29 @@
         </button>
             <button class="button sign-out-cta">Sign out</button>
         </div>
-    </aside>
+    </aside> -->
+    <div class="sidebar flex flex-column justify-between"> 
+        <div class="top" id="sidebar-top">
+            <div class="logo">
+                <img src="logo.png" alt="logo image" class="logo-img">
+                <i class="title">WorkWise</i>
+            </div>
+            <div class="add-project" id="add-project">
+                <i class='bx bx-plus-circle' id="add-btn"></i>
+                <span>Create Project</span>
+            </div>
+        </div>
+        <div class="bottom-container">
+            <div class="notibox">
+                Friend has new availability.
+                <div class="cancel">✕</div>
+            </div>
+            <div class="bottom flex items-center justify-between">
+                <i class='bx bx-user-circle user-icon' ></i>
+                <i class='bx bx-log-out sign-out-cta'></i>
+            </div>
+        </div>
+    </div>
 
     <div class="overlay hide">
         <div class="overlay-content">
@@ -183,110 +209,86 @@
         </div>
     </main>
 
-    <script src="../js/dashboard.js"></script> <!-- Link to JavaScript -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const heading = document.querySelector(".heading-with-arrow");
-            const timetableWrapper = document.querySelector(".relative-wrapper");
-            const whiteBox = document.querySelector(".white-box");
+    <!-- add + update project -->
+    <div id="set-project-overlay" class="overlay-project set-project-overlay hide">
+        <div class="overlay-project-content pink-background-color">
+        <!-- close button -->
+        <button
+            class="button circle-button blue-background-color flex justify-center items-center close-button"
+        >
+            <iconify-icon
+            icon="material-symbols:close-rounded"
+            style="color: black"
+            width="26"
+            height="26"
+            ></iconify-icon>
+        </button>
+        <h1 class="header">Add project</h1>
+        <form class="form" autocomplete="off" id="add-prj-form">
+            <label for="name" class="label">Name</label>
+            <input
+            type="text"
+            name="name"
+            id="project-name"
+            class="input white-background-color"
+            required
+            />
+            <label for="description" class="label">Description</label>
+            <textarea
+            name="description"
+            id="project-description"
+            rows="8"
+            class="textarea-input white-background-color"
+            required
+            ></textarea>
+            <h2 class="label">Due date</h2>
+            <div class="divided-inputs-container">
+            <div>
+                <label for="due-date-day" class="secondary-label">Day</label>
+                <input
+                type="text"
+                name="due-date-day"
+                id="project-due-date-day"
+                class="input white-background-color"
+                required
+                />
+            </div>
+            <div>
+                <label for="due-date-month" class="secondary-label">Month</label>
+                <input
+                type="text"
+                name="due-date-month"
+                id="project-due-date-month"
+                class="input white-background-color"
+                required
+                />
+            </div>
+            <div>
+                <label for="due-date-year" class="secondary-label">Year</label>
+                <input
+                type="text"
+                name="due-date-year"
+                id="project-due-date-year"
+                class="input white-background-color"
+                required
+                />
+            </div>
+            </div>          
+            <div class="text-center">
+            <button
+                type="submit"
+                class="button regular-button green-background-color cta-button"
+                id="submit-project"
+            >
+                Add project
+            </button>
+            </div>
+        </form>
+        </div>
+    </div>
 
-            // Add click event to the arrow/heading to toggle collapsed/expanded state
-            heading.addEventListener("click", function () {
-                // Toggle the classes for collapsing and expanding
-                timetableWrapper.classList.toggle("collapsed");
-                timetableWrapper.classList.toggle("expanded");
-                whiteBox.classList.toggle("collapsed");
-                whiteBox.classList.toggle("expanded");
-
-                // Adjust the height of the white box and maintain the pink background
-                const pinkBackground = document.querySelector(".pink-background-shadow");
-                if (whiteBox.classList.contains("collapsed")) {
-                    pinkBackground.style.height = "70px"; // Adjust pink background height when collapsed
-                } else {
-                    pinkBackground.style.height = "123%"; // Reset to full height when expanded
-                }
-            });
-
-            // Action for "Book a Room" button
-            const bookRoomButton = document.querySelector(".book-room");
-            bookRoomButton.addEventListener("click", function () {
-                window.location.href = "https://freerooms.devsoc.app/";
-            });
-
-            // Action for availability list items
-            document.querySelectorAll('.availability-list li').forEach(item => {
-                item.addEventListener('click', function () {
-                    alert('You selected: ' + item.textContent);
-                    
-                });
-            });
-        });
-    document.addEventListener("DOMContentLoaded", function () {
-        let isMouseDown = false;
-        const table = document.querySelector('.timetable');
-        const availabilityList = document.querySelector('.availability-list'); // The list that shows availability
-        const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']; // Day labels
-        const times = ['9 AM', '10 AM', '11 AM', '12 PM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM']; // Time labels
-
-        // Mouse down event
-        table.addEventListener('mousedown', function (event) {
-            if (event.target.tagName === 'TD') {
-                isMouseDown = true;
-                event.target.classList.add('selected'); // Add selected class
-                event.preventDefault(); // Prevent text selection
-                updateAvailability(); // Update availability when a cell is clicked
-            }
-        });
-
-        // Mouse move event (for dragging)
-        table.addEventListener('mousemove', function (event) {
-            if (isMouseDown && event.target.tagName === 'TD') {
-                event.target.classList.add('selected'); // Mark cell as selected when dragging over it
-                updateAvailability(); // Update availability during dragging
-            }
-        });
-
-        // Mouse up event
-        document.addEventListener('mouseup', function () {
-            isMouseDown = false; // Stop dragging
-        });
-
-        // Optional: double-click to toggle the "selected" state
-        table.addEventListener('click', function (event) {
-            if (event.target.tagName === 'TD') {
-                event.target.classList.toggle('selected'); // Toggle selected state on double-click
-                updateAvailability(); // Update availability when a cell is double-clicked
-            }
-        });
-
-        // Function to update the availability list
-        function updateAvailability() {
-            const selectedCells = table.querySelectorAll('.selected');
-            let selectedTimes = [];
-
-            selectedCells.forEach(cell => {
-                // Get row and column index of the selected cell
-                const rowIndex = cell.parentElement.rowIndex;
-                const colIndex = cell.cellIndex;
-
-                // Map the rowIndex to time and colIndex to day
-                const time = times[rowIndex];
-                const day = days[colIndex];
-
-                // Push the formatted time slot (e.g., "Monday 9 AM")
-                selectedTimes.push(`${day} - ${time}`);
-            });
-
-            // Update the availability list with the selected times
-            availabilityList.innerHTML = ''; // Clear the current list
-            selectedTimes.forEach(timeSlot => {
-                const li = document.createElement('li');
-                li.textContent = timeSlot;
-                availabilityList.appendChild(li);
-            });
-        }
-    });
-
-    </script>
+    <!-- import IconifyIcon web component -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.5/iconify-icon.min.js"></script>
+    <script type="module" src="../js/main.js"></script> <!-- Link to JavaScript -->
 </body>
 </html>

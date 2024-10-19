@@ -9,17 +9,90 @@ body {
 
 /* Sidebar Styles */
 .sidebar {
-    width: 200px;
-    background-color: #f16161; /* Coral for the sidebar */
-    padding: 20px;
+    width: 230px;
     height: 100vh;
+    background-color: #FF9C9C;
+    border-right: 2px solid black;
     position: fixed;
     flex-wrap: 2;
 }
 
-.sidebar-header h2 {
-    color: white;
-    text-align: center;
+.sidebar .logo {
+    width: 100%;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    border-bottom: 2px solid black;
+    box-sizing: border-box;
+}
+
+.sidebar .logo .logo-img {
+    width: 50px;
+    border-radius: 100%;
+}
+
+.sidebar .title {
+    font-size: 1.8rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.sidebar .projects {
+    align-items: center;
+    column-gap: 10px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 15px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.sidebar .projects .bx {
+    font-size: 1.8rem;
+}
+
+.sidebar .projects span {
+    font-size: 1.8rem;
+}
+
+.sidebar .add-project {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    padding: 10px;
+}
+
+.sidebar .add-project #add-btn {
+    cursor: pointer;
+    font-size: 1.8rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sidebar .bottom {
+    padding: 5px 20px;
+    font-size: 2rem;
+    border-top: 2px solid black;
+}
+
+.sidebar .bottom i {
+    cursor: pointer;
+}
+
+.sidebar .bottom .user-icon {
+    font-size: 2.5rem;
+}
+
+.sidebar .buttons-container {
+    display: flex;
+    gap: var(--space-16);
+}
+
+.sidebar .sign-out-cta {
+    font-weight: 600;
+    font-size: 2rem;
+    transform: rotate(180deg);
 }
 
 .nav-list {
@@ -209,6 +282,7 @@ body {
 .expanded .pink-background-shadow {
     height: 123%; 
 }
+
 /* Timetable and Availability Wrapper */
 .timetable-availability-wrapper {
     display: flex;
@@ -381,7 +455,243 @@ body {
     border-radius: 5px;
     cursor: pointer;
     width: 70%;
-    margin: 0 auto;
-    flex-shrink: 0; /* Prevent the button from shrinking */
+    margin-top: 200px;
 }
 
+@import url(https://fonts.googleapis.com/css?family=Muli);
+*{transition:all 0.5s;-webkit-transition:all 0.5s;}
+
+.toggle{
+    font-size:30px;
+    border:1px solid black;
+    border-radius:30px;
+    display:inline-block;
+    height:40px;
+    width:40px;
+    cursor:pointer;
+}
+.ico{
+    margin-left:7px;
+    margin-top:-4px;
+}
+.toggle:hover{
+  -ms-transform: rotate(360deg); /* IE 9 */
+    -webkit-transform: rotate(360deg); /* Safari */
+    transform: rotate(360deg);
+}
+
+.sidebar h2{
+    color:white;
+    text-align:center;
+    font-family: 'Muli', sans-serif;
+}
+
+.sidebar.active{
+    right:0px;
+}
+
+.notibox{
+    color:white;
+    font-family: 'Muli', sans-serif;
+    background-color:#6944ad;
+    width:calc(100% - 60px);
+    padding:15px;
+    margin:15px;
+    border-radius:4px;
+    position:relative;
+}
+
+.cancel{
+    position:absolute;
+    right:7px;
+    top:10px;
+    cursor:pointer;
+    padding:3px;
+    padding-left:8px;
+    padding-right:8px;
+    border-radius:20px;
+}
+
+.cancel:hover{
+    color:black;
+    background-color:white;
+}
+
+.gone{
+    display:none;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.button {
+    padding: 10px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.blue-background {
+    background-color: #3498db;
+    color: white;
+}
+
+.milkwhite-background {
+    background-color: #fdf2c9; /* Your preferred button color */
+    color: black;
+}
+
+/* .sign-out-cta {
+    background-color: #e74c3c;
+    color: white;
+} */
+
+.button:hover {
+    opacity: 0.85;
+}
+
+.overlay {
+    display: grid;
+    place-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dim background */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    overflow: auto;
+}
+
+.overlay.hide {
+    display: none;
+}
+
+.overlay-content {
+    background-color: #f16161; /* Adjusted color */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px; /* Adjust the max width */
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+.overlay-content h2 {
+    text-align: center; /* Center the title */
+    margin-bottom: 20px;
+}
+
+.overlay-content label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.overlay-content input, 
+.overlay-content textarea, 
+.overlay-content select {
+    width: 100%; /* Full width */
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.overlay-content textarea {
+    resize: none;
+    height: 80px; /* Adjusted height for text area */
+}
+
+.overlay-content div {
+    display: flex;
+    gap: 5px; /* Space between the inputs */
+    justify-content: space-between;
+}
+
+.overlay-content div input {
+    width: calc(33.33% - 4px); /* Ensures three inputs fit evenly */
+}
+
+.overlay-content button[type="submit"] {
+    background-color: #a8d5ba; /* Light green button */
+    border: none;
+    color: #000;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Full width */
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.overlay-content button[type="submit"]:hover {
+    background-color: #88b998;
+}
+
+/* overlay-project */
+.overlay-project {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    padding: var(--space-48) var(--space-32) var(--space-32);
+    display: grid;
+    place-items: center;
+    backdrop-filter: blur(6px);
+    background-color: rgba(93, 91, 91, 0.165);
+    transition: opacity 0.3s ease;
+    
+    /* if content is longer than screen height, enable scrollbar */
+    overflow-y: auto;
+}
+
+.overlay-project.hide {
+    display: none;
+}
+
+.overlay-project-content {
+    border: 2px solid var(--black);
+    border-radius: var(--radius-8);
+    padding: var(--space-32);
+    width: 654px;
+    height: 673px;
+    /* to position close button */
+    position: relative;
+}
+
+.overlay-project-content .close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: -25px;
+    margin-right: -16px;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
