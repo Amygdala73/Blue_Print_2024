@@ -110,6 +110,7 @@ body {
     font-weight: bold;
 }
 
+
 /* Main Content Area */
 .main-content {
     margin-left: 270px; /* To avoid overlap with the sidebar */
@@ -546,6 +547,143 @@ body {
 .blue-background {
     background-color: #3498db;
     color: white;
+}
+@import url(https://fonts.googleapis.com/css?family=Muli);
+*{transition:all 0.5s;-webkit-transition:all 0.5s;}
+
+.toggle{
+    font-size:30px;
+    border:1px solid black;
+    border-radius:30px;
+    display:inline-block;
+    height:40px;
+    width:40px;
+    cursor:pointer;
+}
+.ico{
+    margin-left:7px;
+    margin-top:-4px;
+}
+.toggle:hover{
+  -ms-transform: rotate(360deg); /* IE 9 */
+    -webkit-transform: rotate(360deg); /* Safari */
+    transform: rotate(360deg);
+}
+
+.sidebar h2{
+    color:white;
+    text-align:center;
+    font-family: 'Muli', sans-serif;
+}
+
+.sidebar.active{
+    right:0px;
+}
+
+.notibox{
+    color:white;
+    font-family: 'Muli', sans-serif;
+    background-color:#6944ad;
+    width:calc(100% - 60px);
+    padding:15px;
+    margin:15px;
+    border-radius:4px;
+    position:relative;
+}
+
+.cancel{
+    position:absolute;
+    right:7px;
+    top:10px;
+    cursor:pointer;
+    padding:3px;
+    padding-left:8px;
+    padding-right:8px;
+    border-radius:20px;
+}
+
+.cancel:hover{
+    color:black;
+    background-color:white;
+}
+
+.gone{
+    display:none;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.button {
+    padding: 10px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.login-button {
+    width: 60%;
+    border: 1px solid #dec25b;
+}
+
+.blue-background {
+    background-color: #3498db;
+    color: white;
+}
+
+.milkwhite-background {
+    background-color: #fdf2c9; /* Your preferred button color */
+    color: black;
+}
+
+/* .sign-out-cta {
+    background-color: #e74c3c;
+    color: white;
+} */
+
+.button:hover {
+    opacity: 0.85;
+}
+
+.overlay {
+    display: grid;
+    place-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dim background */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    overflow: auto;
+}
+
+.overlay.hide {
+    display: none;
+}
+
+.overlay-content {
+    background-color: #f16161; /* Adjusted color */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px; /* Adjust the max width */
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+.overlay-content h2 {
+    text-align: center; /* Center the title */
+    margin-bottom: 20px;
 }
 
 .milkwhite-background {
