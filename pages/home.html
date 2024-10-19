@@ -4,36 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WorkWise Dashboard</title>
-    <link rel="stylesheet" href="../css/home.css"> <!-- Link to your CSS -->
+    <!-- Link to your CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <!-- icon library -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-<body>
-     <!-- Sidebar for navigation -->
-     <aside class="sidebar">
-        <div class="sidebar-header">
-            <h2>WorkWise</h2>
-        </div>
-        <ul class="nav-list">
-            <li><a href="#">COMP1511 Assessment 1</a></li>
-            <li><a href="#">COMP1511 Assessment 2</a></li>
-        </ul>
 
-        <h2>Notifications</h2>
-        <div class="notibox">
-            Friend has new availability.
-            <div class="cancel">✕</div>
+<body>
+    <!-- Sidebar for navigation -->
+    <div class="sidebar flex flex-column justify-between"> 
+        <div class="top" id="sidebar-top">
+            <div class="logo">
+                <img src="logo.png" alt="logo image" class="logo-img">
+                <i class="title">WorkWise</i>
+            </div>
+            <div class="add-project" id="add-project">
+                <i class='bx bx-plus-circle' id="add-btn"></i>
+                <span>Create Project</span>
+            </div>
+
         </div>
-        <div class="buttons-container">
-            <button id="add-task-cta" 
-            class="button regular-button blue-background">
-            Add task
-        </button>
-            <button onclick="window.location.href='./login.html'" 
-            class="button regular-button milkwhite-background">
-            Go to Login
-        </button>
-            <button class="button sign-out-cta">Sign out</button>
+        <div class="bottom-container">
+            <div class="notibox">
+                Friend has new availability.
+                <div class="cancel">✕</div>
+            </div>
+            <div class="bottom flex items-center justify-between">
+                <!-- <i class='bx bx-user-circle user-icon' ></i> -->
+                <button onclick="window.location.href='./login.html'" 
+                    class="button login-button regular-button milkwhite-background">
+                    Go to Login
+                </button>
+                <i class='bx bx-log-out sign-out-cta'></i>
+            </div>
         </div>
-    </aside>
+    </div>
 
     <div class="overlay hide">
         <div class="overlay-content">
@@ -97,9 +103,6 @@
         </div>
     </div>
     
-
-    
-
     <!-- Main content section -->
     <main class="main-content">
         <!-- Header -->
@@ -107,6 +110,7 @@
             <h1>COMP1511 Assessment 1</h1>
         </section>
         <!-- New White Box Section -->
+
         <section class="white-box">
             <h2 class="heading-with-arrow">
                 <span class="arrow">
@@ -165,54 +169,144 @@
                 <!-- Availability Block -->
                 <div class="availability-container">
                     <h3>Availability</h3>
-                    <ul class="availability-list">
-                        <li>Wed 16 Oct - 10 am - 11 am</li>
-                        <li>Wed 16 Oct - 10 am - 11 am</li>
-                        <li>Wed 16 Oct - 10 am - 11 am</li>
-                    </ul>
+                    <section class = "availability-block">
+                        <ul class="availability-list">
+                            <!-- Dynamically updated time slots will be inserted here -->
+                        </ul>
+                    </section>
                     <button class="book-room">Book a Room</button>
                 </div>
             </div>
         </div>
+        <section class="tasks-section">
+            <h2>Tasks</h2>
+            <div class="task-columns">
+                <!-- To Do Column -->
+                <div class="task-column">
+                    <h3>To Do</h3>
+                    <ul class="task-list">
+                        <li>
+                            <div class="task-card">
+                                <p>Task 1</p>
+                                <small>Person 1, Person 2</small>
+                            </div>
+                        </li>
+                        <!-- Add more tasks as needed -->
+                    </ul>
+                    <button class="add-task">+ New Task</button>
+                </div>
+        
+                <!-- Doing Column -->
+                <div class="task-column">
+                    <h3>Doing</h3>
+                    <ul class="task-list">
+                        <li>
+                            <div class="task-card">
+                                <p>Task 1</p>
+                                <small>Person 1, Person 2</small>
+                            </div>
+                        </li>
+                    </ul>
+                    <button class="add-task">+ New Task</button>
+                </div>
+        
+                <!-- Done Column -->
+                <div class="task-column">
+                    <h3>Done</h3>
+                    <ul class="task-list">
+                        <li>
+                            <div class="task-card">
+                                <p>Task 1</p>
+                                <small>Person 1, Person 2</small>
+                            </div>
+                        </li>
+                    </ul>
+                    <button class="add-task">+ New Task</button>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <script src="../js/dashboard.js"></script> <!-- Link to JavaScript -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const heading = document.querySelector(".heading-with-arrow");
-            const timetableWrapper = document.querySelector(".relative-wrapper");
-            const whiteBox = document.querySelector(".white-box");
+    <!-- add + update project -->
+    <div id="set-project-overlay" class="overlay-project set-project-overlay hide">
+        <div class="overlay-project-content pink-background-color">
+        <!-- close button -->
+        <button
+            class="button circle-button blue-background-color flex justify-center items-center close-button"
+        >
+            <iconify-icon
+            icon="material-symbols:close-rounded"
+            style="color: black"
+            width="26"
+            height="26"
+            ></iconify-icon>
+        </button>
+        <h1 class="header">Add project</h1>
+        <form class="form" autocomplete="off" id="add-prj-form">
+            <label for="name" class="label">Name</label>
+            <input
+            type="text"
+            name="name"
+            id="project-name"
+            class="input white-background-color"
+            required
+            />
+            <label for="description" class="label">Description</label>
+            <textarea
+            name="description"
+            id="project-description"
+            rows="8"
+            class="textarea-input white-background-color"
+            required
+            ></textarea>
+            <h2 class="label">Due date</h2>
+            <div class="divided-inputs-container">
+            <div>
+                <label for="due-date-day" class="secondary-label">Day</label>
+                <input
+                type="text"
+                name="due-date-day"
+                id="project-due-date-day"
+                class="input white-background-color"
+                required
+                />
+            </div>
+            <div>
+                <label for="due-date-month" class="secondary-label">Month</label>
+                <input
+                type="text"
+                name="due-date-month"
+                id="project-due-date-month"
+                class="input white-background-color"
+                required
+                />
+            </div>
+            <div>
+                <label for="due-date-year" class="secondary-label">Year</label>
+                <input
+                type="text"
+                name="due-date-year"
+                id="project-due-date-year"
+                class="input white-background-color"
+                required
+                />
+            </div>
+            </div>          
+            <div class="text-center">
+            <button
+                type="submit"
+                class="button regular-button green-background-color cta-button"
+                id="submit-project"
+            >
+                Add project
+            </button>
+            </div>
+        </form>
+        </div>
+    </div>
 
-            // Add click event to the arrow/heading to toggle collapsed/expanded state
-            heading.addEventListener("click", function () {
-                // Toggle the classes for collapsing and expanding
-                timetableWrapper.classList.toggle("collapsed");
-                timetableWrapper.classList.toggle("expanded");
-                whiteBox.classList.toggle("collapsed");
-                whiteBox.classList.toggle("expanded");
-
-                // Adjust the height of the white box and maintain the pink background
-                const pinkBackground = document.querySelector(".pink-background-shadow");
-                if (whiteBox.classList.contains("collapsed")) {
-                    pinkBackground.style.height = "70px"; // Adjust pink background height when collapsed
-                } else {
-                    pinkBackground.style.height = "123%"; // Reset to full height when expanded
-                }
-            });
-
-            // Action for "Book a Room" button
-            const bookRoomButton = document.querySelector(".book-room");
-            bookRoomButton.addEventListener("click", function () {
-                alert("Booking a room is currently unavailable. Please try again later.");
-            });
-
-            // Action for availability list items
-            document.querySelectorAll('.availability-list li').forEach(item => {
-                item.addEventListener('click', function () {
-                    alert('You selected: ' + item.textContent);
-                });
-            });
-        });
-    </script>
+    <!-- import IconifyIcon web component -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.5/iconify-icon.min.js"></script>
+    <script type="module" src="../js/main.js"></script> <!-- Link to JavaScript -->
 </body>
 </html>
