@@ -183,6 +183,7 @@ body {
   width: 100%;
   padding: var(--space-16);
   margin-top: var(--space-16);
+  box-sizing: border-box;
 }
 
 .input,
