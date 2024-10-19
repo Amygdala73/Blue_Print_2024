@@ -1,13 +1,8 @@
 // elements
-const radioViewOptions = document.querySelectorAll("input[name='view-option']");
-const listView = document.getElementById("list-view");
-const boardView = document.getElementById("board-view");
 const closeButtons = document.querySelectorAll(".close-button");
 const addBtn = document.getElementById('add-btn');
 const setProjectOverlay = document.getElementById("set-project-overlay");
-const submitPrj = document.getElementById("submit-project") as HTMLButtonElement;
 const prjForm = document.getElementById('add-prj-form') as HTMLFormElement;
-const prjFormElements = prjForm?.querySelectorAll('input:not([type="submit"]), textarea');
 // the current active overlay
 let activeOverlay: any = null;
 
@@ -23,12 +18,8 @@ addBtn?.addEventListener('click', (): void => {
 
 // creating a project in sidebar
 prjForm?.addEventListener('submit', (event): void => {
-   const sidebarTop = document.getElementById("sidebar-top");
-   const lastEle = document.getElementById("add-project");
-   const prjName = (document.getElementById("project-name") as HTMLInputElement)?.value;
-
-   let newPrj = document.createElement("div");
    let prjInfo: string[] = []; 
+
    prjInfo.push((document.getElementById("project-name") as HTMLInputElement)?.value);
    prjInfo.push((document.getElementById("project-description") as HTMLTextAreaElement)?.value);
    prjInfo.push((document.getElementById("project-due-date-day") as HTMLInputElement)?.value);
@@ -49,8 +40,6 @@ const closeOverlay = (): void => {
 closeButtons.forEach((button) => {
    button.addEventListener("click", closeOverlay);
 });
-
-const iconCount = parseInt(localStorage.getItem("iconify-count") ?? "0");
 
 const renderPrj = (): void => {
    Object.keys(localStorage).forEach(key => {

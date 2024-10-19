@@ -454,7 +454,8 @@ body {
     border-radius: 5px;
     cursor: pointer;
     width: 70%;
-    margin-top: 200px;
+    margin-top: auto; /* 将按钮推到底部 */
+    margin-bottom: 10px; /* 在底部添加一些空间 */
 }
 
 @import url(https://fonts.googleapis.com/css?family=Muli);

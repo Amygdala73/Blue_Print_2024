@@ -1,14 +1,8 @@
-var _a;
 // elements
-const radioViewOptions = document.querySelectorAll("input[name='view-option']");
-const listView = document.getElementById("list-view");
-const boardView = document.getElementById("board-view");
 const closeButtons = document.querySelectorAll(".close-button");
 const addBtn = document.getElementById('add-btn');
 const setProjectOverlay = document.getElementById("set-project-overlay");
-const submitPrj = document.getElementById("submit-project");
 const prjForm = document.getElementById('add-prj-form');
-const prjFormElements = prjForm === null || prjForm === void 0 ? void 0 : prjForm.querySelectorAll('input:not([type="submit"]), textarea');
 // the current active overlay
 let activeOverlay = null;
 //** event listeners **//
@@ -21,18 +15,14 @@ addBtn === null || addBtn === void 0 ? void 0 : addBtn.addEventListener('click',
 });
 // creating a project in sidebar
 prjForm === null || prjForm === void 0 ? void 0 : prjForm.addEventListener('submit', (event) => {
-    var _a, _b, _c, _d, _e, _f, _g;
-    const sidebarTop = document.getElementById("sidebar-top");
-    const lastEle = document.getElementById("add-project");
-    const prjName = (_a = document.getElementById("project-name")) === null || _a === void 0 ? void 0 : _a.value;
-    let newPrj = document.createElement("div");
+    var _a, _b, _c, _d, _e, _f;
     let prjInfo = [];
-    prjInfo.push((_b = document.getElementById("project-name")) === null || _b === void 0 ? void 0 : _b.value);
-    prjInfo.push((_c = document.getElementById("project-description")) === null || _c === void 0 ? void 0 : _c.value);
-    prjInfo.push((_d = document.getElementById("project-due-date-day")) === null || _d === void 0 ? void 0 : _d.value);
-    prjInfo.push((_e = document.getElementById("project-due-date-month")) === null || _e === void 0 ? void 0 : _e.value);
-    prjInfo.push((_f = document.getElementById("project-due-date-year")) === null || _f === void 0 ? void 0 : _f.value);
-    localStorage.setItem((_g = document.getElementById("project-name")) === null || _g === void 0 ? void 0 : _g.value, JSON.stringify(prjInfo));
+    prjInfo.push((_a = document.getElementById("project-name")) === null || _a === void 0 ? void 0 : _a.value);
+    prjInfo.push((_b = document.getElementById("project-description")) === null || _b === void 0 ? void 0 : _b.value);
+    prjInfo.push((_c = document.getElementById("project-due-date-day")) === null || _c === void 0 ? void 0 : _c.value);
+    prjInfo.push((_d = document.getElementById("project-due-date-month")) === null || _d === void 0 ? void 0 : _d.value);
+    prjInfo.push((_e = document.getElementById("project-due-date-year")) === null || _e === void 0 ? void 0 : _e.value);
+    localStorage.setItem((_f = document.getElementById("project-name")) === null || _f === void 0 ? void 0 : _f.value, JSON.stringify(prjInfo));
 });
 // callback that closes overlays
 const closeOverlay = () => {
@@ -45,7 +35,6 @@ const closeOverlay = () => {
 closeButtons.forEach((button) => {
     button.addEventListener("click", closeOverlay);
 });
-const iconCount = parseInt((_a = localStorage.getItem("iconify-count")) !== null && _a !== void 0 ? _a : "0");
 const renderPrj = () => {
     Object.keys(localStorage).forEach(key => {
         if (key.includes("iconify")) {
