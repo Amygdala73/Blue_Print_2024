@@ -420,6 +420,7 @@ body {
     height: 450px; /* Fixed height */
     flex-shrink: 0;
     justify-content: space-between; /* Ensure button stays at the bottom */
+    align-items: center;
 }
 
 .availability-list {
