@@ -6,9 +6,10 @@
     <title>WorkWise Dashboard</title>
     <link rel="stylesheet" href="../css/home.css"> <!-- Link to your CSS -->
 </head>
+
 <body>
      <!-- Sidebar for navigation -->
-     <aside class="sidebar">
+    <!-- <aside class="sidebar">
         <div class="sidebar-header">
             <h2>WorkWise</h2>
         </div>
@@ -16,7 +17,9 @@
             <li><a href="#">COMP1511 Assessment 1</a></li>
             <li><a href="#">COMP1511 Assessment 2</a></li>
         </ul>
-
+        <div class="toggle">
+            <div class="ico">↻</div>
+        </div>
         <h2>Notifications</h2>
         <div class="notibox">
             Friend has new availability.
@@ -33,7 +36,114 @@
         </button>
             <button class="button sign-out-cta">Sign out</button>
         </div>
-    </aside>
+        <div class="toggle">
+            <div class="ico">↻</div>
+        </div>
+        <h2>Notifications</h2>
+        <div class="notibox">
+            Friend has new availability.
+            <div class="cancel">✕</div>
+        </div>
+        <div class="buttons-container">
+            <button id="add-task-cta" 
+            class="button regular-button blue-background">
+            Add task
+        </button>
+            <button onclick="window.location.href='./login.html'" 
+            class="button regular-button milkwhite-background">
+            Go to Login
+        </button>
+            <button class="button sign-out-cta">Sign out</button>
+        </div>
+    </aside> -->
+    <div class="sidebar flex flex-column justify-between"> 
+        <div class="top" id="sidebar-top">
+            <div class="logo">
+                <img src="logo.png" alt="logo image" class="logo-img">
+                <i class="title">WorkWise</i>
+            </div>
+            <div class="add-project" id="add-project">
+                <i class='bx bx-plus-circle' id="add-btn"></i>
+                <span>Create Project</span>
+            </div>
+        </div>
+        <div class="bottom-container">
+            <div class="notibox">
+                Friend has new availability.
+                <div class="cancel">✕</div>
+            </div>
+            <div class="bottom flex items-center justify-between">
+                <!-- <i class='bx bx-user-circle user-icon' ></i> -->
+                <button onclick="window.location.href='./login.html'" 
+                    class="button login-button regular-button milkwhite-background">
+                    Go to Login
+                </button>
+                <i class='bx bx-log-out sign-out-cta'></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay hide">
+        <div class="overlay-content">
+            <button class="close-button">✕</button>
+            <form class="add-task-form">
+                <h2>Add Task</h2>
+    
+                <!-- Name Field -->
+                <label for="task-name">Name</label>
+                <input type="text" id="task-name" name="name" required>
+                
+                <!-- Description Field -->
+                <label for="task-desc">Description</label>
+                <textarea id="task-desc" name="description"></textarea>
+                
+                <!-- Due Date Section -->
+                <label for="task-day">Start Date and Time</label>
+                <div>
+                    <input type="number" id="task-day" name="day" placeholder="Day" min="1" max="31" required>
+                    <input type="number" id="task-month" name="month" placeholder="Month" min="1" max="12" required>
+                    <input type="number" id="task-year" name="year" placeholder="Year" min="2024" required>
+                </div>
+                
+                <!-- Start Time Section -->
+                <label for="task-day">Due Date and Time</label>
+                <div>
+                    <input type="number" id="task-day" name="day" placeholder="Day" min="1" max="31" required>
+                    <input type="number" id="task-month" name="month" placeholder="Month" min="1" max="12" required>
+                    <input type="number" id="task-year" name="year" placeholder="Year" min="2024" required>
+                </div>
+    
+                <!-- Priority Section -->
+                <label for="priority">Priority</label>
+                <input type="range" id="priority" name="priority" min="1" max="4" step="1">
+                <div class="priority-labels">
+                    <span>Urgent & Important</span>
+                    <span>Not Urgent & Important</span>
+                    <span>Not Urgent & Unimportant</span>
+                    <span>Urgent & Unimportant</span>
+                </div>
+    
+                <!-- Availability Section -->
+                <label for="availability">Availability</label>
+                <input type="range" id="availability" name="availability" min="1" max="2" step="1">
+                <div class="availability-labels">
+                    <span>Not Available</span>
+                    <span>Available</span>
+                </div>
+                
+                <!-- Status Section -->
+                <label for="task-status">Status</label>
+                <select id="task-status" name="status">
+                    <option value="todo">To do</option>
+                    <option value="doing">Doing</option>
+                    <option value="done">Done</option>
+                </select>
+                
+                <!-- Submit Button -->
+                <button type="submit" class="button regular-button">Add task</button>
+            </form>
+        </div>
+    </div>
 
     <div class="overlay hide">
         <div class="overlay-content">
@@ -99,7 +209,7 @@
     
 
     
-
+    
     <!-- Main content section -->
     <main class="main-content">
         <!-- Header -->
@@ -107,6 +217,7 @@
             <h1>COMP1511 Assessment 1</h1>
         </section>
         <!-- New White Box Section -->
+
         <section class="white-box">
             <h2 class="heading-with-arrow">
                 <span class="arrow">
@@ -165,16 +276,146 @@
                 <!-- Availability Block -->
                 <div class="availability-container">
                     <h3>Availability</h3>
-                    <ul class="availability-list">
-                        <li>Wed 16 Oct - 10 am - 11 am</li>
-                        <li>Wed 16 Oct - 10 am - 11 am</li>
-                        <li>Wed 16 Oct - 10 am - 11 am</li>
-                    </ul>
+                    <section class = "availability-block">
+                        <ul class="availability-list">
+                            <!-- Dynamically updated time slots will be inserted here -->
+                        </ul>
+                    </section>
                     <button class="book-room">Book a Room</button>
+
+
+
+                    
                 </div>
             </div>
         </div>
+        <section class="tasks-section">
+            <h2>Tasks</h2>
+            <div class="task-columns">
+                <!-- To Do Column -->
+                <div class="task-column">
+                    <h3>To Do</h3>
+                    <ul class="task-list">
+                        <li>
+                            <div class="task-card">
+                                <p>Task 1</p>
+                                <small>Person 1, Person 2</small>
+                            </div>
+                        </li>
+                        <!-- Add more tasks as needed -->
+                    </ul>
+                    <button class="add-task">+ New Task</button>
+                </div>
+        
+                <!-- Doing Column -->
+                <div class="task-column">
+                    <h3>Doing</h3>
+                    <ul class="task-list">
+                        <li>
+                            <div class="task-card">
+                                <p>Task 1</p>
+                                <small>Person 1, Person 2</small>
+                            </div>
+                        </li>
+                    </ul>
+                    <button class="add-task">+ New Task</button>
+                </div>
+        
+                <!-- Done Column -->
+                <div class="task-column">
+                    <h3>Done</h3>
+                    <ul class="task-list">
+                        <li>
+                            <div class="task-card">
+                                <p>Task 1</p>
+                                <small>Person 1, Person 2</small>
+                            </div>
+                        </li>
+                    </ul>
+                    <button class="add-task">+ New Task</button>
+                </div>
+            </div>
+        </section>
     </main>
+
+        <!-- add + update project -->
+        <div id="set-project-overlay" class="overlay-project set-project-overlay hide">
+            <div class="overlay-project-content pink-background-color">
+            <!-- close button -->
+            <button
+                class="button circle-button blue-background-color flex justify-center items-center close-button"
+            >
+                <iconify-icon
+                icon="material-symbols:close-rounded"
+                style="color: black"
+                width="26"
+                height="26"
+                ></iconify-icon>
+            </button>
+            <h1 class="header">Add project</h1>
+            <form class="form" autocomplete="off" id="add-prj-form">
+                <label for="name" class="label">Name</label>
+                <input
+                type="text"
+                name="name"
+                id="project-name"
+                class="input white-background-color"
+                required
+                />
+                <label for="description" class="label">Description</label>
+                <textarea
+                name="description"
+                id="project-description"
+                rows="8"
+                class="textarea-input white-background-color"
+                required
+                ></textarea>
+                <h2 class="label">Due date</h2>
+                <div class="divided-inputs-container">
+                <div>
+                    <label for="due-date-day" class="secondary-label">Day</label>
+                    <input
+                    type="text"
+                    name="due-date-day"
+                    id="project-due-date-day"
+                    class="input white-background-color"
+                    required
+                    />
+                </div>
+                <div>
+                    <label for="due-date-month" class="secondary-label">Month</label>
+                    <input
+                    type="text"
+                    name="due-date-month"
+                    id="project-due-date-month"
+                    class="input white-background-color"
+                    required
+                    />
+                </div>
+                <div>
+                    <label for="due-date-year" class="secondary-label">Year</label>
+                    <input
+                    type="text"
+                    name="due-date-year"
+                    id="project-due-date-year"
+                    class="input white-background-color"
+                    required
+                    />
+                </div>
+                </div>          
+                <div class="text-center">
+                <button
+                    type="submit"
+                    class="button regular-button green-background-color cta-button"
+                    id="submit-project"
+                >
+                    Add project
+                </button>
+                </div>
+            </form>
+            </di
+    
+
 
     <script src="../js/dashboard.js"></script> <!-- Link to JavaScript -->
     <script>
@@ -203,16 +444,84 @@
             // Action for "Book a Room" button
             const bookRoomButton = document.querySelector(".book-room");
             bookRoomButton.addEventListener("click", function () {
-                alert("Booking a room is currently unavailable. Please try again later.");
+                window.location.href = "https://freerooms.devsoc.app/";
             });
 
             // Action for availability list items
             document.querySelectorAll('.availability-list li').forEach(item => {
                 item.addEventListener('click', function () {
                     alert('You selected: ' + item.textContent);
+                    
                 });
             });
         });
+    document.addEventListener("DOMContentLoaded", function () {
+        let isMouseDown = false;
+        const table = document.querySelector('.timetable');
+        const availabilityList = document.querySelector('.availability-list'); // The list that shows availability
+        const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']; // Day labels
+        const times = ['9 AM', '10 AM', '11 AM', '12 PM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM']; // Time labels
+
+        // Mouse down event
+        table.addEventListener('mousedown', function (event) {
+            if (event.target.tagName === 'TD') {
+                isMouseDown = true;
+                event.target.classList.add('selected'); // Add selected class
+                event.preventDefault(); // Prevent text selection
+                updateAvailability(); // Update availability when a cell is clicked
+            }
+        });
+
+        // Mouse move event (for dragging)
+        table.addEventListener('mousemove', function (event) {
+            if (isMouseDown && event.target.tagName === 'TD') {
+                event.target.classList.add('selected'); // Mark cell as selected when dragging over it
+                updateAvailability(); // Update availability during dragging
+            }
+        });
+
+        // Mouse up event
+        document.addEventListener('mouseup', function () {
+            isMouseDown = false; // Stop dragging
+        });
+
+        // Optional: double-click to toggle the "selected" state
+        table.addEventListener('click', function (event) {
+            if (event.target.tagName === 'TD') {
+                event.target.classList.toggle('selected'); // Toggle selected state on double-click
+                updateAvailability(); // Update availability when a cell is double-clicked
+            }
+        });
+
+        // Function to update the availability list
+        function updateAvailability() {
+            const selectedCells = table.querySelectorAll('.selected');
+            let selectedTimes = [];
+
+            selectedCells.forEach(cell => {
+                // Get row and column index of the selected cell
+                const rowIndex = cell.parentElement.rowIndex;
+                const colIndex = cell.cellIndex;
+
+                // Map the rowIndex to time and colIndex to day
+                const time = times[rowIndex];
+                const day = days[colIndex];
+
+                // Push the formatted time slot (e.g., "Monday 9 AM")
+                selectedTimes.push(`${day} - ${time}`);
+            });
+
+            // Update the availability list with the selected times
+            availabilityList.innerHTML = ''; // Clear the current list
+            selectedTimes.forEach(timeSlot => {
+                const li = document.createElement('li');
+                li.textContent = timeSlot;
+                availabilityList.appendChild(li);
+            });
+        }
+    });
+    
+
     </script>
 </body>
 </html>
