@@ -440,6 +440,7 @@ body {
     overflow-y: auto; /* Add scroll if list overflows */
     flex-grow: 1; /* Take up the remaining space */
     max-height: 300px; /* Limit the height of the list */
+    width: 300px;
 }
 
 .availability-list li {

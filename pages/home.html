@@ -377,12 +377,11 @@
             isMouseDown = false; // Stop dragging
         });
 
-        // Optional: double-click to toggle the "selected" state
-        table.addEventListener('click', function (event) {
-            if (event.target.tagName === 'TD') {
-                event.target.classList.toggle('selected'); // Toggle selected state on double-click
-                updateAvailability(); // Update availability when a cell is double-clicked
-            }
+        table.addEventListener('dblclick', function (event) {
+        if (event.target.tagName === 'TD') {
+            event.target.classList.toggle('selected'); // Toggle selected state on double-click
+            removeAvailability(event.target); // Remove time slot from availability
+        }
         });
 
         // Function to update the availability list
