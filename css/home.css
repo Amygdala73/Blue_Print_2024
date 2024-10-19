@@ -183,7 +183,6 @@ body {
     border-radius: 10px; /* Rounded corners */
     width: fit-content; /* Adjust width to fit content */
     top:-58px;
-    
 }
 
 
@@ -287,12 +286,6 @@ body {
     opacity: 1; /* Ensure visibility */
 }
 
-.collapsed .arrow svg {
-    transform: rotate(180deg);
-    transition: transform 0.3s ease;
-}
-
-
 /* Timetable and Availability Wrapper */
 .timetable-availability-wrapper {
     display: flex;
@@ -323,8 +316,6 @@ body {
     max-height: 500px;
     opacity: 1;
 }
-
-
 
 .timetable {
     width: 100%;
@@ -429,10 +420,11 @@ body {
     border-radius: 10px;
     text-align: center;
     margin-left: 20px;
-    width: 400px;
+    width: 300px;
     height: 450px; /* Fixed height */
     flex-shrink: 0;
     justify-content: space-between; /* Ensure button stays at the bottom */
+    align-items: center;
 }
 
 .availability-list {
@@ -465,101 +457,12 @@ body {
     border-radius: 5px;
     cursor: pointer;
     width: 70%;
-    margin: 0 auto;
-    flex-shrink: 0; /* Prevent the button from shrinking */
+    margin-top: auto; 
+    margin-bottom: 10px; 
 }
 
-@import url(https://fonts.googleapis.com/css?family=Muli);
-*{transition:all 0.5s;-webkit-transition:all 0.5s;}
 
-.toggle{
-    font-size:30px;
-    border:1px solid black;
-    border-radius:30px;
-    display:inline-block;
-    height:40px;
-    width:40px;
-    cursor:pointer;
-}
-.ico{
-    margin-left:7px;
-    margin-top:-4px;
-}
-.toggle:hover{
-  -ms-transform: rotate(360deg); /* IE 9 */
-    -webkit-transform: rotate(360deg); /* Safari */
-    transform: rotate(360deg);
-}
 
-.sidebar h2{
-    color:white;
-    text-align:center;
-    font-family: 'Muli', sans-serif;
-}
-
-.sidebar.active{
-    right:0px;
-}
-
-.notibox{
-    color:white;
-    font-family: 'Muli', sans-serif;
-    background-color:#6944ad;
-    width:calc(100% - 60px);
-    padding:15px;
-    margin:15px;
-    border-radius:4px;
-    position:relative;
-}
-
-.cancel{
-    position:absolute;
-    right:7px;
-    top:10px;
-    cursor:pointer;
-    padding:3px;
-    padding-left:8px;
-    padding-right:8px;
-    border-radius:20px;
-}
-
-.cancel:hover{
-    color:black;
-    background-color:white;
-}
-
-.gone{
-    display:none;
-}
-
-.buttons-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    margin-top: 20px;
-}
-
-.button {
-    padding: 10px;
-    width: 100%;
-    border: none;
-    cursor: pointer;
-    font-size: 15px;
-    border-radius: 5px;
-    text-align: center;
-    transition: background-color 0.3s ease, opacity 0.3s ease;
-}
-
-.login-button {
-    width: 60%;
-    border: 1px solid #dec25b;
-}
-
-.blue-background {
-    background-color: #3498db;
-    color: white;
-}
 @import url(https://fonts.googleapis.com/css?family=Muli);
 *{transition:all 0.5s;-webkit-transition:all 0.5s;}
 
