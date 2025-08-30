@@ -1,4 +1,4 @@
-﻿﻿# WorkWise - Collaborative Task Management Platform
+﻿# WorkWise - Collaborative Task Management Platform
 
 > **Blueprint Hackathon 2024 | Team 29**
 
@@ -105,3 +105,4 @@ This project was created for the Blueprint Hackathon 2024. Please refer to the h
 ---
 
 *Built with ❤️ for Blueprint Hackathon 2024*
+
